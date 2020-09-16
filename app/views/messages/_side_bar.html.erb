@@ -1,7 +1,11 @@
 <div class="container" style="background-color: rgba(55,55,55,0.2);">
   <div class="row">
     <div class="col">
-      User_name
+    <% if user_signed_in? %>
+      <%= current_user.name %>
+    <% else %>
+      ログインしていません
+    <% end %>
     </div>
     <div class="col">
       <button type="button" class="btn btn-outline-light btn-sm">プロフィール編集</button>
@@ -9,9 +13,9 @@
   </div>
 </div>
 <div class="container" style="background-color: rgba(55,155,55,0.2);">
-  <button type="button" class="btn btn-outline-light">新規登録</button>
-  <button type="button" class="btn btn-outline-light">ログイン</button>
-  <button type="button" class="btn btn-outline-light">ログアウト</button>
+  <button type="button" class="btn btn-outline-light"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
+  <button type="button" class="btn btn-outline-light"><%= link_to "ログイン", new_user_session_path %></button>
+  <button type="button" class="btn btn-outline-light"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
 </div>
 <div class="container" style="background-color: rgba(55,55,155,0.2);">
   <button type="button" class="btn btn-outline-light">公認メンター一覧</button>
