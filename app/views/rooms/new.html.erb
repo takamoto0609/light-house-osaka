@@ -1,0 +1,16 @@
+<%=form_with model: @room, local: true do |f|%><form>
+  <div>
+    <%= f.label :チャットルーム名 %>
+  </div>
+  <div>
+    <%= f.text_field :name, placeholder: 'チャットルーム名を入力してください'%>
+  </div>
+  <div>
+    <%= f.label :相談内容 %>
+  </div>
+  <div>
+    <%= f.text_area :content, placeholder: '相談内容を入力してください'%>
+  </div>
+  <button type="submit" class="btn btn-primary"><%= f.submit %></button>
+  
+<% end %>

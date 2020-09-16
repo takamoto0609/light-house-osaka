@@ -1,0 +1,16 @@
+ここにRoom作成時に入力した名前と相談内容を表示したい
+
+<%=form_with model: @message, local: true do |f| %><form>
+  <div>
+    <%= f.label :メッセージ %>
+  </div>
+  投稿者の場合は名前選択なし、メンターの場合はセレクトBOX
+  
+  <div>
+    <%= f.text_field :content, placeholder: 'メッセージを入力してください' %>
+  </div>
+  
+  <button type="submit" class="btn btn-primary"><%= f.submit %></button>
+  
+<% end %>
+あとはLINEのようにやりとりができる

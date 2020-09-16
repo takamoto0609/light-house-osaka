@@ -1,1 +1,8 @@
-<%= render "mentor_lists" %>
+相談中のルーム
+<div>
+  <% @rooms.each do |room| %>
+    <div>
+      <button type="button" class="btn btn-outline-light"><%= link_to room.name, new_message_path %></button>
+    </div>
+  <% end %>
+</div>
