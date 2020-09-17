@@ -1,24 +1,30 @@
 class MessagesController < ApplicationController
-  def index
+  def index #room_messages_path(room)
     @rooms = Room.all
+    @message = Message.new
+    @room = Room.find(params[:room_id])
+    @messages = @room.messages.includes(:user)
   end
 
   def new
     @message = Message.new
   end
 
-  def creates
-    @message = Message.new(message_params)
-    if @message.save
-      redirect_to root_path
-    else
-      render :new
-    end
+  def create
+    @room = Room.find(params[:room_id])
+    @message = @room.messages.new(message_params)
+    @message.save
+    redirect_to room_messages_path
+
+    # else
+    #   @messages = @room.messages.includes(:user)
+    #   render :index
+    # end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content).merge(user_id: current_user.id)
   end
 end

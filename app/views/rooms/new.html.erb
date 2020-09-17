@@ -11,6 +11,7 @@
   <div>
     <%= f.text_area :content, placeholder: '相談内容を入力してください'%>
   </div>
+  <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
   <button type="submit" class="btn btn-primary"><%= f.submit %></button>
   
 <% end %>
