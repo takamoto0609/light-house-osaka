@@ -8,28 +8,39 @@
     <% end %>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-outline-light btn-sm">プロフィール編集</button>
+      <% if user_signed_in? %>
+        <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "新規プロフィール作成", new_profile_path %></button>
+        <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "マイプロフィール", profile_path(:user) %></button>
+      <% end %>
     </div>
   </div>
 </div>
 <div class="container" style="background-color: rgba(55,155,55,0.2);">
-  <button type="button" class="btn btn-outline-light"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
-  <button type="button" class="btn btn-outline-light"><%= link_to "ログイン情報編集", edit_user_registration_path %></button>
-  <button type="button" class="btn btn-outline-light"><%= link_to "ログイン", new_user_session_path %></button>
-  <button type="button" class="btn btn-outline-light"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+  <% if user_signed_in? %>
+    <button type="button" class="btn btn-outline-light"><%= link_to "ログイン情報編集", edit_user_registration_path %></button>
+    <button type="button" class="btn btn-outline-light"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+  <% else %>
+    <button type="button" class="btn btn-outline-light"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
+    <button type="button" class="btn btn-outline-light"><%= link_to "ログイン", new_user_session_path %></button>
+  <% end %>
   <button type="button" class="btn btn-outline-light"><%= link_to "管理者用画面" %></button>
 </div>
-<div class="container" style="background-color: rgba(55,55,155,0.2);">
-  <button type="button" class="btn btn-outline-light">公認メンター一覧</button>
-</div>
-<div class="container" style="background-color: rgba(0,255,0,0.5);">
-  <button type="button" class="btn btn-outline-light"><%= link_to "新規相談ルームを作成する", new_room_path %></button>
-</div>
+<% if user_signed_in? %>
+  <div class="container" style="background-color: rgba(55,55,155,0.2);">
+    <button type="button" class="btn btn-outline-light">公認メンター一覧</button>
+  </div>
+  <div class="container" style="background-color: rgba(0,255,0,0.5);">
+    <button type="button" class="btn btn-outline-light"><%= link_to "新規相談ルームを作成する", new_room_path %></button>
+  </div>
+<% end %>
+
 相談中のルーム
 <div>
-  <% @rooms.each do |room| %>
-    <div>
-      <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
-    </div>
+  <% if user_signed_in? %>
+    <% @rooms.where(user_id: current_user.id).each do |room| %>
+      <div>
+        <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
+      </div>
+    <% end %>
   <% end %>
 </div>

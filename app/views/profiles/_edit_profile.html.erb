@@ -1,0 +1,50 @@
+<h1>プロフィール編集</h1>
+
+<%= form_with model: @current_user_profile, local: true do |f|%>
+  
+  <h5>氏名(姓)を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_field :family_name, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <h5>氏名(名)を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_field :given_name, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <h5>氏名(姓フリガナ)を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_field :family_name_kana, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <h5>氏名(名フリガナ)を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_field :given_name_kana, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <h5>性別を選択してください</h5>
+  <div class="form-input">
+    <%= f.collection_select(:sex_id, Sex.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+  </div>
+  <h5>血液型を選択してください</h5>
+  <div class="form-input">
+    <%= f.collection_select(:blood_type_id, BloodType.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+  </div>
+  <h5>生年月日を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_field :birth_day, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <h5>住んでいる地域を選択してください</h5>
+  <div class="form-input">
+    <%= f.collection_select(:address_id, Address.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+  </div>
+  <h5>職業を選択してください</h5>
+  <div class="form-input">
+    <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+  </div>
+  <h5>勤務先を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_field :work_place, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <h5>自己紹介を入力してください</h5>
+  <div class="form-input">
+    <%= f.text_area :summary, class: 'form-control', placeholder: 'type a message' %>
+  </div>
+  <%= f.submit '編集', class: 'form-submit' %>
+<% end %>

@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
   end
 
   def new
@@ -20,6 +19,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name, :content)
+    params.require(:room).permit(:name, :content).merge(user_id: current_user.id)
   end
 end

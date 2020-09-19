@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  blood_type: MyString
+  address: MyString
+  occupation: MyString
+
+two:
+  blood_type: MyString
+  address: MyString
+  occupation: MyString
