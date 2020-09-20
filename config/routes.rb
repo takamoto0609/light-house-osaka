@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'mentors/index'
   get 'profiles/index'
   get 'profiles/new'
   get 'profiles/edit'
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
     resources :messages
   end
   resources :profiles
+  resources :mentors
 end

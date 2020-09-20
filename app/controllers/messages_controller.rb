@@ -13,6 +13,12 @@ class MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
     @message.save
+    # ルームstatus: 0(新規),1(相談中),2(解決済)
+    @room.status = 1
+    if @message.content == "解決済" || @message.content == "解決済み"
+      @room.status = 2
+    end
+    @room.save
     redirect_to room_messages_path
 
     # else
