@@ -16,4 +16,9 @@
   </div>
   <%= f.submit '送信', class: 'form-submit' %>
 <% end %>
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", root_path %></button>
+
+<% if current_user.mentor == 0 %>
+  <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", root_path %></button>
+<% elsif current_user.mentor == 1 %>
+  <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", rooms_list_up_mentors_path %></button>
+<% end %>

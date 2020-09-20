@@ -1,12 +1,18 @@
-<h1>Mentors#index</h1>
-<p>必要な機能</p>
-<p>メンター権限付与</p>
-<p>メンターログイン</p>
-<p>メンター属性のユーザーは全てのルームが表示され入れる</p>
-<p>ユーザー検索機能</p>
-<p>各カラムで検索がかけられる</p>
-<p>解決済みのルームは表示されない、OR下に溜まっていく</p>
-<p>ルーム検索して特定のルームに参加できるようにする</p>
-<p>メンター同士はチャットできる</p>
-<p>新規ルームは上に表示される</p>
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", root_path %></button>
+<h1>管理者用画面</h1>
+<h3>機能</h3>
+
+<h4>登録者一覧／メンター権限付与</h4>
+<%= link_to "ユーザーをメンターとして承認する", mentor_approval_mentors_path %>
+
+<h4>全てのルーム一覧を見る</h4>
+<%= link_to "全ルーム一覧へ", rooms_list_up_mentors_path %>
+
+<h4>全てのプロフィール一覧を見る</h4>
+<%= link_to "全プロフィール一覧へ", profiles_list_up_mentors_path %>
+
+<h4>ユーザー検索</h4>
+<%= link_to "ユーザー検索へ", users_search_mentors_path %>
+
+<div>
+  <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", root_path %></button>
+</div>

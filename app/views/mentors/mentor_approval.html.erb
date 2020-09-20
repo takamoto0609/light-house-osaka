@@ -1,0 +1,21 @@
+<h1>登録者一覧／メンター権限付与</h1>
+
+<% @users.each do |user| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= user.name %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
+      <p class="card-text">現在の状態：
+        <% if user.mentor == 0 %>
+          ユーザー
+        <% elsif user.mentor == 1 %>
+          メンター
+        <% end %>
+      </p>
+      <p class="card-text">メンターとユーザーを切り替えることができます。</p>
+      <%= link_to "メンターとユーザーを切り替える", mentor_user_mentors_path(user.id) %>
+    </div>
+  </div>
+<% end %>
+
+<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", mentors_path %></button>
