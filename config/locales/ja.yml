@@ -2,3 +2,30 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+ja:
+  activerecord:
+    models:
+      room: ルーム
+      message: メッセージ
+      profile: プロフィール
+    attributes:
+      room:
+        name: ルーム名
+        content: 相談内容
+      message:
+        content: 送信したい内容
+      profile:
+        family_name: 氏名(姓)
+        given_name: 氏名(名)
+        family_name_kana: フリガナ(姓)
+        given_name_kana: フリガナ(名)
+        sex_id: 性別
+        blood_type_id: 血液型
+        birth_day: 生年月日
+        zodiac_sign_id: 星座
+        age_group_id: 年齢
+        address_id: 住んでいる地域
+        occupation_id: 職業
+        work_place: 勤務先
+        summary: 自己紹介
