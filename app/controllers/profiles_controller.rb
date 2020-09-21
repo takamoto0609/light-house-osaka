@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
 
   def search
     @results = @p.result
-    # .includes(:sex, :blood_type, :address, :occupation)
+    # .includes(:sex, :blood_type, :zodiac_sign, :age_group, :address, :occupation)
   end
 
   private
