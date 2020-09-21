@@ -18,7 +18,8 @@
   <%= f.label :birth_day_eq, '生年月日' %>
   <%= f.collection_select :birth_day_eq, @profile_birth_day, :birth_day, :birth_day,  include_blank: '指定なし' %>
   <br>
-  <%#f.collection_select カラム名＋属性, 配列データ, 表示する際参照するDBのカラム名, 実際に表示されるカラム名, 第五引数, オプション%>
+  <%#f.collection_select profileテーブルのカラム名＋属性, 配列データ, 表示する際参照するDBのカラム名, 実際に表示されるカラム名, 第五引数, オプション%>
+  <%#profileテーブルのsex_idの値が, Sexモデルのidとeq、つまり等しいレコードを@pに入れる, 実際に検索の選択肢として表示されるカラム名＝Sexモデルの:nameカラム,%>
   <%= f.label :sex_id_eq, '性別' %>
   <%= f.collection_select :sex_id_eq, Sex.all, :id, :name,  include_blank: '指定なし' %>
   <br>
