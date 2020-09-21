@@ -1,0 +1,24 @@
+<h1>ユーザー検索結果</h1>
+
+<% if @results.length !=0 %>
+<% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+      <%= result.family_name %>
+      <%= result.given_name %>
+      <%= result.family_name_kana %>
+      <%= result.given_name_kana %>
+      <%= result.sex.name %>
+      <%= result.blood_type.name %>
+      <%= result.birth_day %>
+      <%= result.address.name %>
+      <%= result.occupation.name %>
+      <%= result.work_place %>
+    </li>
+  <% end %>
+<% else %>
+  該当者がいません
+<% end %>
+<br>
+<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", list_up_profiles_path %></button>

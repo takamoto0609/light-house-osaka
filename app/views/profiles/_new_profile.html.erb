@@ -31,6 +31,14 @@
   <div class="form-input">
     <%= f.text_field :birth_day, class: 'form-control', placeholder: 'type a message' %>
   </div>
+  <h5>星座を選択してください</h5>
+  <div class="form-input">
+    <%= f.collection_select(:zodiac_sign_id, ZodiacSign.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+  </div>
+  <h5>年齢を選択してください</h5>
+  <div class="form-input">
+    <%= f.collection_select(:age_group_id, AgeGroup.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+  </div>
   <h5>住んでいる地域を選択してください</h5>
   <div class="form-input">
     <%= f.collection_select(:address_id, Address.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>

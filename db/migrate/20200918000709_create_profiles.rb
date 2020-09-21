@@ -8,6 +8,8 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.integer    :sex_id,            null: false
       t.integer    :blood_type_id,     null: false
       t.integer    :birth_day,         null: false
+      t.integer    :zodiac_sign_id,    null: false
+      t.integer    :age_group_id,      null: false
       t.integer    :address_id,        null: false #住んでいる地域
       t.integer    :occupation_id,     null: false #職業
       t.string     :work_place,        null: false #勤務先

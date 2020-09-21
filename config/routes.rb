@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :messages
   end
-  resources :profiles
+  resources :profiles do
+  collection do #今回はcollectionを使用（idは不要）
+   get 'list_up'
+   get 'search'
+  end
+end
   resources :mentors do
     collection do #今回はcollectionを使用（idは不要）
      get 'mentor_approval'

@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2020_09_19_063246) do
     t.integer "sex_id", null: false
     t.integer "blood_type_id", null: false
     t.integer "birth_day", null: false
+    t.integer "zodiac_sign_id", null: false
+    t.integer "age_group_id", null: false
     t.integer "address_id", null: false
     t.integer "occupation_id", null: false
     t.string "work_place", null: false
