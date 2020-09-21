@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
     @current_user_profile = Profile.find_by(user_id: current_user.id)
     if @current_user_profile == nil
       @profile = Profile.new
-      render "new"
+      render :new
     else
       @sex = Sex.find(@current_user_profile.sex_id)
       @blood_type = BloodType.find(@current_user_profile.blood_type_id)
@@ -41,8 +41,12 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.new(profile_params)
-    Profile.find(params[:id]).update(profile_params)
-    redirect_to root_path
+    if @profile.valid?
+      Profile.find(params[:id]).update(profile_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
   
   def list_up

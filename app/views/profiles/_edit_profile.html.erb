@@ -1,6 +1,7 @@
 <h1>プロフィール編集</h1>
 
 <%= form_with model: @current_user_profile, local: true do |f|%>
+  <%= render 'shared/error_messages', model: f.object %>
   
   <h5>氏名(姓)を入力してください</h5>
   <div class="form-input">
