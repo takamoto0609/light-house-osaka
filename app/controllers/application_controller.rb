@@ -10,8 +10,5 @@ class ApplicationController < ActionController::Base
 
   def before_action_of_side_bar
     @rooms = Room.all.order(:status).order(id: "DESC")
-    # if user_signed_in?
-    #   @rooms = @rooms.find_by(user_id: current_user.id)
-    # end
   end
 end

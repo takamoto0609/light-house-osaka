@@ -1,19 +1,19 @@
 <%=form_with model: @room, local: true do |f|%><form>
   <%= render 'shared/error_messages', model: f.object %>
   <div>
-    <%= f.label :チャットルーム名 %>
+    <%= f.label :ルーム名 %>
   </div>
   <div>
-    <%= f.text_field :name, placeholder: 'チャットルーム名を入力してください'%>
+    <%= f.text_field :name, class:"form-control", placeholder: 'ルーム名を入力してください'%>
   </div>
   <div>
     <%= f.label :相談内容 %>
   </div>
   <div>
-    <%= f.text_area :content, placeholder: '相談内容を入力してください'%>
+    <%= f.text_area :content, class:"form-control", placeholder: '相談内容を入力してください'%>
   </div>
   <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
-  <button type="submit" class="btn btn-primary"><%= f.submit %></button>
+  <button class="btn btn-primary" type="submit">作成</button>
   
 <% end %>
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", root_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to "戻る", root_path %></button>

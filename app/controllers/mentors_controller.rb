@@ -23,6 +23,7 @@ class MentorsController < ApplicationController
   end
 
   def rooms_list_up
+    @rooms = Room.all.order(:status).order(user_id: "ASC")
   end
 
   def profiles_list_up
@@ -37,8 +38,6 @@ class MentorsController < ApplicationController
   def users_search
     @results = @p.result.includes(:sex, :blood_type, :address, :occupation)
   end
-
-
 
   private
 

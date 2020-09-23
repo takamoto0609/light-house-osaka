@@ -2,7 +2,7 @@
 
 <div>
   <% @rooms.each do |room| %>
-    ルームID：<%= room.id %>-<%= room.user_id %>
+    ユーザーID：<%= room.user_id %>
     <div>
       <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
         <% if room.status == 0 %>
@@ -16,4 +16,4 @@
     <% end %>
 </div>
 
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", mentors_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to "戻る", mentors_path %></button>

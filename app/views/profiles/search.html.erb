@@ -1,10 +1,13 @@
 <h1>ユーザー検索結果</h1>
+※ルームに入ってからこの画面に戻りたい場合は、ブラウザでバックした方が便利です<br>
+(ルームには検索画面に戻るボタンしかないため)<br><br>
 
 <% if @results.length !=0 %>
-<% @results.each do |result| %>
+  <% @results.each do |result| %>
     <td>
     <br>
     <li>
+      ID:<%= result.user_id %>
       <%= result.family_name %>
       <%= result.given_name %>
       <%= result.family_name_kana %>
@@ -17,10 +20,26 @@
       <%= result.address.name %>
       <%= result.occupation.name %>
       <%= result.work_place %>
+      <br>
+      自己紹介：<%= result.summary %>
     </li>
+    <% @rooms = @rooms.where(user_id: result.user_id) %>
   <% end %>
+  <% @rooms.each do |room| %>
+      <div>
+        <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
+        <% if room.status == 0 %>
+          <span class="badge badge-pill badge-danger">新規</span>
+        <% elsif room.status == 1 %>
+          <span class="badge badge-pill badge-warning">相談中</span>
+        <% elsif room.status == 2 %>
+          <span class="badge badge-pill badge-success">解決済</span>
+        <% end %>
+      </div>  
+    <% end %>
+
 <% else %>
   該当者がいません
 <% end %>
 <br>
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", list_up_profiles_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to "戻る", list_up_profiles_path %></button>

@@ -1,7 +1,7 @@
 <h1>登録者一覧／メンター権限付与</h1>
-
+<div class="row">
 <% @users.each do |user| %>
-  <div class="card" style="width: 18rem;">
+  <div class="card col-3" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title"><%= user.name %></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
@@ -16,5 +16,6 @@
     </div>
   </div>
 <% end %>
+</div>
 
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", mentors_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to "戻る", mentors_path %></button>

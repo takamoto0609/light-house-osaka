@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   collection do #今回はcollectionを使用（idは不要）
    get 'list_up'
    get 'search'
+   get 'mentors_list_up'
   end
 end
   resources :mentors do

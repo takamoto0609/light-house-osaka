@@ -5,56 +5,56 @@
   
   <h5>氏名(姓)を入力してください</h5>
   <div class="form-input">
-    <%= f.text_field :family_name, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_field :family_name, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
   <h5>氏名(名)を入力してください</h5>
   <div class="form-input">
-    <%= f.text_field :given_name, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_field :given_name, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
   <h5>氏名(姓フリガナ)を入力してください</h5>
   <div class="form-input">
-    <%= f.text_field :family_name_kana, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_field :family_name_kana, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
   <h5>氏名(名フリガナ)を入力してください</h5>
   <div class="form-input">
-    <%= f.text_field :given_name_kana, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_field :given_name_kana, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
   <h5>性別を選択してください</h5>
   <div class="form-input">
-    <%= f.collection_select(:sex_id, Sex.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+    <%= f.collection_select(:sex_id, Sex.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>
   </div>
   <h5>血液型を選択してください</h5>
   <div class="form-input">
-    <%= f.collection_select(:blood_type_id, BloodType.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+    <%= f.collection_select(:blood_type_id, BloodType.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>
   </div>
   <h5>生年月日を入力してください</h5>
   <div class="form-input">
-    <%= f.text_field :birth_day, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_field :birth_day, class: 'form-control', placeholder: '例：2000年4月1日 → 20000401' %>
   </div>
   <h5>星座を選択してください</h5>
   <div class="form-input">
-    <%= f.collection_select(:zodiac_sign_id, ZodiacSign.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+    <%= f.collection_select(:zodiac_sign_id, ZodiacSign.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>
   </div>
   <h5>年齢を選択してください</h5>
   <div class="form-input">
-    <%= f.collection_select(:age_group_id, AgeGroup.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+    <%= f.collection_select(:age_group_id, AgeGroup.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>
   </div>
   <h5>住んでいる地域を選択してください</h5>
   <div class="form-input">
-    <%= f.collection_select(:address_id, Address.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+    <%= f.collection_select(:address_id, Address.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>
   </div>
   <h5>職業を選択してください</h5>
   <div class="form-input">
-    <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {include_blank: true}, {class: 'form-control-sm'}) %>
+    <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>
   </div>
   <h5>勤務先を入力してください</h5>
   <div class="form-input">
-    <%= f.text_field :work_place, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_field :work_place, class: 'form-control', placeholder: '記入できる範囲で結構です' %>
   </div>
   <h5>自己紹介を入力してください</h5>
   <div class="form-input">
-    <%= f.text_area :summary, class: 'form-control', placeholder: 'type a message' %>
+    <%= f.text_area :summary, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
-  <%= f.submit '作成', class: 'form-submit' %>
+  <button class="btn btn-primary" type="submit">作成</button>
 <% end %>
-<button type="button" class="btn btn-outline-light btn-sm"><%= link_to "戻る", root_path %></button>
+<button type="button" class="btn btn-outline-info"><%= link_to "戻る", root_path %></button>

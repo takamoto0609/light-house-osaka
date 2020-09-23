@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @current_user_profile = Profile.find_by(user_id: current_user.id)
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   def update
@@ -45,22 +45,23 @@ class ProfilesController < ApplicationController
       Profile.find(params[:id]).update(profile_params)
       redirect_to root_path
     else
+      # @profile = Profile.find(params[:id])
+      @profile = Profile.find_by(user_id: current_user.id)
       render :edit
     end
   end
   
   def list_up
-    @profiles = Profile.all
+    @profiles = Profile.all.order(:user_id)
     set_profile_column
-    # set_sex_column
-    # set_blood_type_column
-    # set_address_column
-    # set_occupation_column
   end
 
   def search
     @results = @p.result
-    # .includes(:sex, :blood_type, :zodiac_sign, :age_group, :address, :occupation)
+  end
+
+  def mentors_list_up
+    @profiles = Profile.all
   end
 
   private
@@ -82,18 +83,5 @@ class ProfilesController < ApplicationController
     @profile_given_name_kana = Profile.select("given_name_kana").distinct
     @profile_birth_day = Profile.select("birth_day").distinct
   end
-  
-  # def set_sex_column
-  #   @sex_name = Sex.pluck(:name)
-  # end
-  # def set_blood_type_column
-  #   @blood_type_name = BloodType.select("name").distinct
-  # end
-  # def set_adddress_column
-  #   @adddress_name = Address.select("name").distinct
-  # end
-  # def set_occupation_column
-  #   @occupation_name = Occupation.select("name").distinct
-  # end
 
 end

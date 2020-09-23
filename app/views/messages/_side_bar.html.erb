@@ -8,9 +8,10 @@
     <% end %>
     </div>
     <div class="col">
-      <% if user_signed_in? %>
-        <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "新規プロフィール作成", new_profile_path %></button>
-        <button type="button" class="btn btn-outline-light btn-sm"><%= link_to "マイプロフィール", profile_path(:user) %></button>
+      <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
+        <button type="button" class="btn btn-outline-light btn"><%= link_to "新規プロフィール作成", new_profile_path %></button>
+      <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
+        <button type="button" class="btn btn-outline-light btn"><%= link_to "マイプロフィール", profile_path(:user) %></button>
       <% end %>
     </div>
   </div>
@@ -23,11 +24,13 @@
     <button type="button" class="btn btn-outline-light"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
     <button type="button" class="btn btn-outline-light"><%= link_to "ログイン", new_user_session_path %></button>
   <% end %>
-  <button type="button" class="btn btn-outline-light"><%= link_to "管理者用画面", mentors_path %></button>
+  <% if user_signed_in? %>
+      <button type="button" class="btn btn-outline-light"><%= link_to "管理者用画面", mentors_path %></button>
+    <% end %>
 </div>
 <% if user_signed_in? %>
   <div class="container" style="background-color: rgba(55,55,155,0.2);">
-    <button type="button" class="btn btn-outline-light">公認メンター一覧</button>
+    <button type="button" class="btn btn-outline-light"><%= link_to "公認メンター一覧", mentors_list_up_profiles_path %></button>
   </div>
   <div class="container" style="background-color: rgba(0,255,0,0.5);">
     <button type="button" class="btn btn-outline-light"><%= link_to "新規相談ルームを作成する", new_room_path %></button>
