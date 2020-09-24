@@ -8,12 +8,11 @@
   </div>
   <div>
     <%= f.label :相談内容 %>
-  </div>
+  </div>
   <div>
     <%= f.text_area :content, class:"form-control", placeholder: '相談内容を入力してください'%>
   </div>
   <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
   <button class="btn btn-primary" type="submit">作成</button>
-  
-<% end %>
-<button type="button" class="btn btn-outline-info"><%= link_to "戻る", root_path %></button>
+
+  <% end %>

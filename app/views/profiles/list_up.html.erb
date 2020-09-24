@@ -1,98 +1,14 @@
-<div class="row">
-  <div class="col-3">
-  <h1>ユーザー検索</h1>
-  ※ID検索等、1件該当した場合はプロフィールとルームが表示されます<br><br>
-  ※複数該当した場合はプロフィールしか表示されません<br><br>
-  <%= search_form_for @p, url: search_profiles_path do |f| %>
-  <%= f.label :user_id_eq, 'ユーザーID' %>
-  <%= f.collection_select :user_id_eq, @profiles, :user_id, :user_id,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :family_name_eq, '氏名(姓)' %>
-  <%= f.collection_select :family_name_eq, @profile_family_name, :family_name, :family_name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :given_name_eq, '氏名(名)' %>
-  <%= f.collection_select :given_name_eq, @profile_given_name, :given_name, :given_name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :family_name_kana_eq, 'フリガナ(姓)' %>
-  <%= f.collection_select :family_name_kana_eq, @profile_family_name_kana, :family_name_kana, :family_name_kana,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :given_name_kana_eq, 'フリガナ(名)' %>
-  <%= f.collection_select :given_name_kana_eq, @profile_given_name_kana, :given_name_kana, :given_name_kana,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :birth_day_eq, '生年月日' %>
-  <%= f.collection_select :birth_day_eq, @profile_birth_day, :birth_day, :birth_day,  include_blank: '指定なし' %>
-  <br>
-  <%#f.collection_select profileテーブルのカラム名＋属性, 配列データ, 表示する際参照するDBのカラム名, 実際に表示されるカラム名, 第五引数, オプション%>
-  <%#profileテーブルのsex_idの値が, Sexモデルのidとeq、つまり等しいレコードを@pに入れる, 実際に検索の選択肢として表示されるカラム名＝Sexモデルの:nameカラム,%>
-  <%= f.label :sex_id_eq, '性別' %>
-  <%= f.collection_select :sex_id_eq, Sex.all, :id, :name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :age_group_id_eq, '年齢' %>
-  <%= f.collection_select :age_group_id_eq, AgeGroup.all, :id, :name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :zodiac_sign_id_eq, '星座' %>
-  <%= f.collection_select :zodiac_sign_id_eq, ZodiacSign.all, :id, :name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :blood_type_id_eq, '血液型' %>
-  <%= f.collection_select :blood_type_id_eq, BloodType.all, :id, :name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :address_id_eq, '住んでいる地域' %>
-  <%= f.collection_select :address_id_eq, Address.all, :id, :name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.label :occupation_id_eq, '職業' %>
-  <%= f.collection_select :occupation_id_eq, Occupation.all, :id, :name,  include_blank: '指定なし' %>
-  <br>
-  <%= f.submit '検索', class:'btn btn-primary' %>
-  <br>
-  <button type="button" class="btn btn-outline-info"><%= link_to "戻る", mentors_path %></button>
-  </div>
+<%= render "shared/header" %>
 
-  <div class="col-6">
-  <h1>全プロフィール一覧</h1>
-  ※ユーザーID順に表示されます<br>
-  プロフィールがないユーザーは表示されません<br><br>
-    <% @profiles.each do |profile| %>
-    <td>
-    <br>
-    <li>
-      ID:<%= profile.user_id %>
-      <%= profile.family_name %>
-      <%= profile.given_name %>
-      <%= profile.family_name_kana %>
-      <%= profile.given_name_kana %>
-      <%= profile.sex.name %>
-      <%= profile.age_group.name %>
-      <%= profile.blood_type.name %>
-      <%= profile.birth_day %>
-      <%= profile.zodiac_sign.name %>
-      <%= profile.address.name %>
-      <%= profile.occupation.name %>
-      <%= profile.work_place %>
-      <br>
-      自己紹介：<%= profile.summary %>
-    </li>
-    <% end %>
-    <% end %>
+<div class="shared_body overflow-auto">
 
-  </div>
-  
-  <div class="col-3">
-  <h1>全ルーム一覧</h1>
-  ※新規ルーム(まだ誰も返信していない相談)を見つけるのに使ってください<br><br>
-  ※ここで見つけたIDでユーザー検索すると、プロフィールとルームが表示されて便利です<br><br>
-  ※連続でメッセージする場合はここからルームに入った方が便利です<br><br>
-  <% @rooms.each do |room| %>
-    ユーザーID：<%= room.user_id %>
-    <div>
-      <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
-        <% if room.status == 0 %>
-          <span class="badge badge-pill badge-danger">新規</span>
-        <% elsif room.status == 1 %>
-          <span class="badge badge-pill badge-warning">相談中</span>
-        <% elsif room.status == 2 %>
-          <span class="badge badge-pill badge-success">解決済</span>
-        <% end %>
-      </div>  
-    <% end %>
+  <%= render "profiles/search_form" %>
+
+  <div class="d-flex flex-column"> <%#縦並び%>
+    <button type="button"
+      class="btn btn-outline-primary m-2"><%= link_to "全プロフィール一覧", all_profiles_mentors_path %></button>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "全ルーム一覧", all_rooms_mentors_path %></button>
   </div>
 </div>
+
+<%= render "shared/footer" %>

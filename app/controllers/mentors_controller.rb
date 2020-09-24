@@ -3,14 +3,17 @@ class MentorsController < ApplicationController
   before_action :search_profile
 
   def index
+    @header_title = "管理者用画面"
   end
 
   # メンターとして承認する
   def mentor_approval
+    @header_title = "メンター・ユーザー切り替え"
     @users = User.all
   end
 
   def mentor_user
+    @header_title = "メンター・ユーザー切り替え"
     @users = User.all
     @user = User.find_by(id: params[:format])
     if @user.mentor == 0
@@ -22,17 +25,20 @@ class MentorsController < ApplicationController
     render "mentor_approval"
   end
 
-  def rooms_list_up
+  def new_rooms
+    @header_title = "新規ルーム一覧"
     @rooms = Room.all.order(:status).order(user_id: "ASC")
   end
 
-  def profiles_list_up
+  def all_rooms
+    @header_title = "全ルーム一覧"
+    @rooms = Room.all.order(:status).order(user_id: "ASC")
+  end
+
+  def all_profiles
+    @header_title = "全プロフィール一覧"
     @profiles = Profile.all
     set_profile_column
-    set_sex_column
-    set_blood_type_column
-    set_address_column
-    set_occupation_column
   end
 
   def users_search
@@ -59,16 +65,4 @@ class MentorsController < ApplicationController
     @profile_birth_day = Profile.select("birth_day").distinct
   end
   
-  def set_sex_column
-    @sex_name = Sex.select("name").distinct
-  end
-  def set_blood_type_column
-    @blood_type_name = BloodType.select("name").distinct
-  end
-  def set_adddress_column
-    @adddress_name = Address.select("name").distinct
-  end
-  def set_occupation_column
-    @occupation_name = Occupation.select("name").distinct
-  end
 end

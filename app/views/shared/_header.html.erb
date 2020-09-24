@@ -1,0 +1,28 @@
+<div class="shared_header row">
+  <div class="h4 p-2 text-white col-9">
+    <%= @header_title %>
+  </div>
+
+  <%#雷マーク%>
+  <div class="col-3">
+    <div class="row">
+      <div class="col-6">
+        <%= link_to "#" do %>
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-bolt fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+        <% end %>
+      </div>
+      <%#設定%>
+      <div class="col-6">
+        <%= link_to "#" do %>
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-cog fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

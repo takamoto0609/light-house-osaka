@@ -1,12 +1,9 @@
-<h1>管理者用画面</h1>
-<h3>機能</h3>
+<%= render "shared/header" %>
 
-<h4>登録者一覧／メンター権限付与</h4>
-<%= link_to "ユーザーをメンターとして承認する", mentor_approval_mentors_path %>
-
-<h4>全てのプロフィール・ルーム一覧を見る</h4>
-<%= link_to "GO！", list_up_profiles_path %>
-
-<div>
-  <button type="button" class="btn btn-outline-info"><%= link_to "戻る", root_path %></button>
+<div class="shared_body overflow-auto">
+  <div class="d-flex flex-column"> <%#縦並び%>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "ユーザーをメンターとして承認する", mentor_approval_mentors_path %></button>
+  </div>
 </div>
+
+<%= render "shared/footer" %>

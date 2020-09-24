@@ -1,0 +1,25 @@
+<%= render "shared/header" %>
+
+<div class="shared_body overflow-auto">
+  <div class="d-flex flex-column"> <%#縦並び%>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "新規ルームを作成する", new_room_path %></button>
+  </div>
+  <div>
+    <% if user_signed_in? %>
+    <% @rooms.where(user_id: current_user.id).each do |room| %>
+    <div>
+      <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
+      <% if room.status == 0 %>
+      <span class="badge badge-pill badge-danger">新規</span>
+      <% elsif room.status == 1 %>
+      <span class="badge badge-pill badge-warning">相談中</span>
+      <% elsif room.status == 2 %>
+      <span class="badge badge-pill badge-success">解決済</span>
+      <% end %>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

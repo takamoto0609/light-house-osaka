@@ -16,3 +16,10 @@
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
+
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ // @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+ @import 'rooms';
+ @import 'messages';
+ @import 'shared';

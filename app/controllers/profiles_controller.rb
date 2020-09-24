@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    @header_title = "プロフィール登録"
     @profile = Profile.new
     # @current_user_profile = Profile.find_by(user_id: current_user.id)
   end
@@ -21,6 +22,7 @@ class ProfilesController < ApplicationController
   end
 
   def show #モデルに指示をして取得したデータをビューに渡す
+    @header_title = "マイプロフィール"
     @current_user_profile = Profile.find_by(user_id: current_user.id)
     if @current_user_profile == nil
       @profile = Profile.new
@@ -36,6 +38,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @header_title = "プロフィール編集"
     @profile = Profile.find_by(user_id: current_user.id)
   end
 
@@ -52,15 +55,20 @@ class ProfilesController < ApplicationController
   end
   
   def list_up
+    @header_title = "プロフィール検索"
     @profiles = Profile.all.order(:user_id)
     set_profile_column
   end
 
   def search
+    @header_title = "検索結果"
     @results = @p.result
+    @profiles = Profile.all.order(:user_id)
+    set_profile_column
   end
 
   def mentors_list_up
+    @header_title = "公認メンターの皆さん"
     @profiles = Profile.all
   end
 

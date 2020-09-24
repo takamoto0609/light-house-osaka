@@ -1,10 +1,7 @@
-<div class="container-fluid">
-  <div class="row"> <!-- side_barとmain_chatを横並びにする -->
-    <div class="col-3" style="background-color: rgba(0,255,55,0.7);"> <!-- colが2つだと2分割 -->
-      <%= render "messages/side_bar" %>
-    </div>
-    <div class="col-9" style="background-color: rgba(255,0,255,0.1);">
-      <%= render "new_room" %>
-    </div>
-  </div>
+<%= render "shared/header" %>
+
+<div class="shared_body">
+  <%= render "new_room" %>
 </div>
+
+<%= render "shared/footer" %>

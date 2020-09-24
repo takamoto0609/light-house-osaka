@@ -1,0 +1,96 @@
+<div class="shared_footer">
+  <div class="container">
+    <div class="footer_contents row">
+
+      <%#ホーム画面%>
+      <%= link_to home_rooms_path do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-home fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+
+      <%#メンターリスト%>
+      <%= link_to mentors_list_up_profiles_path do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="far fa-address-book fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+
+      <%#チャットルーム%>
+      <%= link_to list_up_rooms_path do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="far fa-comments fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+
+      <%#プロフィール%>
+      <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
+      <%= link_to new_profile_path do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="far fa-id-card fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+      <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
+      <%= link_to profile_path(:user) do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="far fa-id-card fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+      <% end %>
+
+
+      
+
+      <%#戻る%>
+      <%= link_to :back do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-reply fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+
+      <%#メンターのみ使える機能%>
+      <% if current_user.mentor == 1%>
+
+      <%#新規ルーム発見%>
+      <%= link_to new_rooms_mentors_path do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="far fa-lightbulb fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+
+      <%#検索%>
+      <%= link_to list_up_profiles_path do %>
+      <div class="footer_btn col">
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-search fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+      </div>
+      <% end %>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

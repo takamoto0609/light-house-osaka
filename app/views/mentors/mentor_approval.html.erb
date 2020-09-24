@@ -1,21 +1,36 @@
-<h1>登録者一覧／メンター権限付与</h1>
-<div class="row">
-<% @users.each do |user| %>
-  <div class="card col-3" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"><%= user.name %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
-      <p class="card-text">現在の状態：
-        <% if user.mentor == 0 %>
-          ユーザー
-        <% elsif user.mentor == 1 %>
-          メンター
-        <% end %>
-      </p>
-      <%= link_to "メンターとユーザーを切り替える", mentor_user_mentors_path(user.id) %>
+<%= render "shared/header" %>
+
+<div class="shared_body overflow-auto">
+  <div class="d-flex flex-column"> <%#縦並び%>
+    <div class="row">
+      <% @users.each do |user| %>
+      <div class="card col-6" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
+          <p class="card-text">
+            <% if user.mentor == 0 %>
+            ユーザー
+            <% elsif user.mentor == 1 %>
+            メンター
+            <% end %>
+          </p>
+
+          <%#切り替えボタン%>
+          <%= link_to mentor_user_mentors_path(user.id) do %>
+          <div class="footer_btn col">
+            <span class="fa-stack fa-lg">
+              <i class="fas fa-sync-alt fa-stack-1x"></i>
+              <i class="far fa-circle fa-stack-2x text-primary"></i>
+            </span>
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
-<% end %>
 </div>
 
-<button type="button" class="btn btn-outline-info"><%= link_to "戻る", mentors_path %></button>
+<%= render "shared/footer" %>

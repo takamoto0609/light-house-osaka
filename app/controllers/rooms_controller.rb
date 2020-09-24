@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
   end
 
   def new
+    @header_title = "新規ルーム作成"
     @room = Room.new
   end
 
@@ -15,6 +16,19 @@ class RoomsController < ApplicationController
     end
   end
 
+  def home
+    @header_title = "ホーム"
+    unless user_signed_in?
+      render "rooms/log_in"
+    end
+  end
+
+  def log_in
+  end
+
+  def list_up
+    @header_title = "相談ルーム"
+  end
 
   private
 

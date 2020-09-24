@@ -1,0 +1,18 @@
+.shared_header{
+  height: 50px;
+  background-color: blueviolet;
+}
+
+.shared_body{
+  height: calc(100vh - 150px);
+}
+
+.shared_footer{
+  height: 100px;
+  background-color: lightblue;
+}
+
+.footer_btn {
+  display: flex;
+  justify-content: center;
+}
