@@ -1,0 +1,1 @@
+<%= link_to "メールアドレスでログインする", new_user_session_path, class: "btn loginPage_contents_btn" %>

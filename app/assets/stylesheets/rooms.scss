@@ -8,17 +8,47 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+
     &_title {
       margin-top: 12vh;
     }
-    &_btn {
+
+    &_main_btn {
       display: block;
       max-width: 400px;
       padding: 20px;
       margin: 0 auto;
       border-radius: 30px;
-      background: #fd5068;
+      background: rgb(40, 40, 200);
+      color: #fff;
+    }
+
+    &_btn {
+      display: block;
+      max-width: 300px;
+      padding: 5px;
+      margin: 0 auto;
+      margin-bottom: 2px;
+      border-radius: 30px;
+      background:rgb(80, 80, 200);
       color: #fff;
     }
   }
+}
+
+.modal_window {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 255, 0.3);
+}
+
+.modal_body {
+  width: 100%;
+  margin-top: 60vh;
 }
