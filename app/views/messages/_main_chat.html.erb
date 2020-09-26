@@ -18,9 +18,3 @@
   <%= f.submit '送信', class: 'btn btn-primary' %>
   解決済(or解決済み)と送信すると<span class="badge badge-pill badge-success">解決済</span>になります<br>
 <% end %>
-
-<% if current_user.mentor == 0 %>
-  <button type="button" class="btn btn-outline-info"><%= link_to "戻る", root_path %></button>
-<% elsif current_user.mentor == 1 %>
-  <button type="button" class="btn btn-outline-info"><%= link_to "検索画面に戻る", list_up_profiles_path %></button>
-<% end %>

@@ -8,23 +8,24 @@
         <div class="card-body">
           <h5 class="card-title"><%= user.name %></h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
-          <p class="card-text">
-            <% if user.mentor == 0 %>
-            ユーザー
-            <% elsif user.mentor == 1 %>
-            メンター
-            <% end %>
-          </p>
+
+          <% if user.mentor == 0 %>
+          ユーザー
+          <% elsif user.mentor == 1 %>
+          メンター
+          <% end %>
 
           <%#切り替えボタン%>
           <%= link_to mentor_user_mentors_path(user.id) do %>
-          <div class="footer_btn col">
+          
             <span class="fa-stack fa-lg">
               <i class="fas fa-sync-alt fa-stack-1x"></i>
               <i class="far fa-circle fa-stack-2x text-primary"></i>
             </span>
-          </div>
+          
           <% end %>
+
+
 
         </div>
       </div>

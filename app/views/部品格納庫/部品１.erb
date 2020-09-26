@@ -1,0 +1,50 @@
+<%= link_to "メールアドレスでログインする", new_user_session_path, class: "btn loginPage_contents_btn" %>
+
+デバイスのログイン画面
+<% if devise_mapping.rememberable? %>
+<div class="field">
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %>
+</div>
+<% end %>
+
+<%#メンターリスト%>
+<%= link_to mentors_list_up_profiles_path do %>
+<div class="footer_btn col">
+  <span class="fa-stack fa-lg">
+    <i class="far fa-address-book fa-stack-1x"></i>
+    <i class="far fa-circle fa-stack-2x text-primary"></i>
+  </span>
+</div>
+<% end %>
+
+<%#プロフィール%>
+<% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
+<%= link_to new_profile_path do %>
+<div class="footer_btn col">
+  <span class="fa-stack fa-lg">
+    <i class="far fa-id-card fa-stack-1x"></i>
+    <i class="far fa-circle fa-stack-2x text-primary"></i>
+  </span>
+</div>
+<% end %>
+<% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
+<%= link_to profile_path(:user) do %>
+<div class="footer_btn col">
+  <span class="fa-stack fa-lg">
+    <i class="far fa-id-card fa-stack-1x"></i>
+    <i class="far fa-circle fa-stack-2x text-primary"></i>
+  </span>
+</div>
+<% end %>
+<% end %>
+
+<%#戻る%>
+<%= link_to :back do %>
+<div class="footer_btn col">
+  <span class="fa-stack fa-lg">
+    <i class="fas fa-reply fa-stack-1x"></i>
+    <i class="far fa-circle fa-stack-2x text-primary"></i>
+  </span>
+</div>
+<% end %>

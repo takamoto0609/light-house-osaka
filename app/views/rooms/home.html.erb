@@ -1,18 +1,33 @@
 <%= render "shared/header" %>
 
 <div class="shared_body">
+ユーザー名：<%= current_user.name %>
   <div class="d-flex flex-column"> <%#縦並び%>
+
+    <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "新規プロフィール作成", new_profile_path %></button>
+    <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "Myプロフィール", profile_path(:user) %></button>
+    <% end %>
+
+    <button type="button"
+      class="btn btn-outline-primary m-2"><%= link_to "公認メンター一覧", mentors_list_up_profiles_path %></button>
+
     <% if user_signed_in? %>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "ログイン情報編集", edit_user_registration_path %></button>
-    <button type="button"class="btn btn-outline-primary m-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+    <button type="button"
+      class="btn btn-outline-primary m-2"><%= link_to "ログイン情報編集", edit_user_registration_path %></button>
+    <button type="button"
+      class="btn btn-outline-primary m-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
     <% else %>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
+    <button type="button"
+      class="btn btn-outline-primary m-2"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
     <button type="button" class="btn btn-outline-primary m-2"><%= link_to "ログイン", new_user_session_path %></button>
     <% end %>
 
     <% if user_signed_in? %>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "管理者用画面", mentors_path %></button>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "🔐管理者用画面", mentors_path %></button>
     <% end %>
+
   </div>
 </div>
 

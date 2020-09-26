@@ -4,7 +4,7 @@
   <div class="row">
     <% @profiles.each do |profile| %>
     <% if profile.user.mentor == 1 %>
-    <div class="card col-6" style="width: 18rem;">
+    <div class="card col-6">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">氏名：<%= profile.family_name %><%= profile.given_name %></li>
         <li class="list-group-item">フリガナ：<%= profile.family_name_kana %><%= profile.given_name_kana %></li>

@@ -1,0 +1,14 @@
+.sign_in {
+  &_contents {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+}
+
+.sign_in_title {
+  margin-top: 12vh;
+  color: blue;
+}

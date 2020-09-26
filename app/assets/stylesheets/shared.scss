@@ -4,11 +4,12 @@
 }
 
 .shared_body{
-  height: calc(100vh - 150px);
+  height: calc(100vh - 100px);
+  overflow: auto;
 }
 
 .shared_footer{
-  height: 100px;
+  height: 50px;
   background-color: lightblue;
 }
 

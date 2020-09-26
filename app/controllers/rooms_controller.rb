@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   def index
+    @header_title = "ライブラリ"
   end
 
   def new
@@ -35,4 +36,5 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:name, :content).merge(user_id: current_user.id)
   end
+
 end

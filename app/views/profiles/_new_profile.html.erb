@@ -1,5 +1,3 @@
-<h1>新規プロフィール作成</h1>
-
 <%= form_with model: @profile, local: true do |f|%>
   <%= render 'shared/error_messages', model: f.object %>
   
@@ -11,11 +9,11 @@
   <div class="form-input">
     <%= f.text_field :given_name, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
-  <h5>氏名(姓フリガナ)を入力してください</h5>
+  <h5>フリガナ(姓)を入力してください</h5>
   <div class="form-input">
     <%= f.text_field :family_name_kana, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
-  <h5>氏名(名フリガナ)を入力してください</h5>
+  <h5>フリガナ(名)を入力してください</h5>
   <div class="form-input">
     <%= f.text_field :given_name_kana, class: 'form-control', placeholder: 'Please enter.' %>
   </div>
@@ -57,4 +55,3 @@
   </div>
   <button class="btn btn-primary" type="submit">作成</button>
 <% end %>
-<button type="button" class="btn btn-outline-info"><%= link_to "戻る", root_path %></button>
