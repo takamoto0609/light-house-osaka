@@ -1,27 +1,56 @@
 <%= render "shared/header" %>
 
-<div class="shared_body overflow-auto">
-  <% @profiles.each do |profile| %>
-    <td>
-    <br>
-    <li>
-      ID:<%= profile.user_id %>
-      <%= profile.family_name %>
-      <%= profile.given_name %>
-      <%= profile.family_name_kana %>
-      <%= profile.given_name_kana %>
-      <%= profile.sex.name %>
-      <%= profile.age_group.name %>
-      <%= profile.blood_type.name %>
-      <%= profile.birth_day %>
-      <%= profile.zodiac_sign.name %>
-      <%= profile.address.name %>
-      <%= profile.occupation.name %>
-      <%= profile.work_place %>
-      <br>
-      自己紹介：<%= profile.summary %>
-    </li>
-    <% end %>
-</div>
+<div class="row">
+  <div class="col-3">
 
-<%= render "shared/footer" %>
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">ホームへ戻る</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
+    </div>
+
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "search_img3.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">検索</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", list_up_profiles_path %></button>
+    </div>
+
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "rooms_img2.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">全ルーム一覧</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_rooms_mentors_path %></button>
+    </div>
+
+  </div>
+
+  <div class="overflow-auto col-9">
+    <% @profiles.each do |profile| %>
+    <td>
+      <br>
+      <li>
+        ID:<%= profile.user_id %>
+        <%= profile.family_name %>
+        <%= profile.given_name %>
+        <%= profile.family_name_kana %>
+        <%= profile.given_name_kana %>
+        <%= profile.sex.name %>
+        <%= profile.age_group.name %>
+        <%= profile.blood_type.name %>
+        <%= profile.birth_day %>
+        <%= profile.zodiac_sign.name %>
+        <%= profile.address.name %>
+        <%= profile.occupation.name %>
+        <%= profile.work_place %>
+        <br>
+        自己紹介：<%= profile.summary %>
+      </li>
+      <% end %>
+  </div>
+
+</div>

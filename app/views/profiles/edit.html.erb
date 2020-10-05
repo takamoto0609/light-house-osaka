@@ -1,7 +1,20 @@
 <%= render "shared/header" %>
 
-<div class="shared_body overflow-auto">
-  <%= render "edit_profile" %>
-</div>
+<div class="row">
+  <div class="col-3">
 
-<%= render "shared/footer" %>
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">ホームへ戻る</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
+    </div>
+
+  </div>
+
+  <div class="shared_body overflow-auto col-9">
+    <%= render "edit_profile" %>
+  </div>
+
+</div>

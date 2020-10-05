@@ -1,14 +1,38 @@
 <%= render "shared/header" %>
 
-<div class="shared_body overflow-auto">
+<div class="row">
+  <div class="col-3">
 
-  <%= render "profiles/search_form" %>
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">ホームへ戻る</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
+    </div>
 
-  <div class="d-flex flex-column"> <%#縦並び%>
-    <button type="button"
-      class="btn btn-outline-primary m-2"><%= link_to "全プロフィール一覧", all_profiles_mentors_path %></button>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "全ルーム一覧", all_rooms_mentors_path %></button>
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">全プロフィール一覧</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_profiles_mentors_path %></button>
+    </div>
+
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "rooms_img2.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">全ルーム一覧</h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_rooms_mentors_path %></button>
+    </div>
+
   </div>
-</div>
 
-<%= render "shared/footer" %>
+  <div class="shared_body overflow-auto col-9">
+
+    <%= render "profiles/search_form" %>
+
+  </div>
+
+</div>

@@ -1,9 +1,38 @@
 <%= render "shared/header" %>
 
-<div class="shared_body overflow-auto">
-  <div class="d-flex flex-column"> <%#縦並び%>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "ユーザーをメンターとして承認する", mentor_approval_mentors_path %></button>
+<div class="row">
+  <div class="col-3">
+
+    <div class="card col" style="width: 18rem;">
+      <div>
+        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">ホームへ戻る</h5>
+      <p class="card-text"></p>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
+    </div>
+
+  </div>
+
+  <div class="col-9 row">
+
+    <div class="card col-4" style="width: 18rem;">
+      <div>
+        <%= image_tag "edit_img.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">ユーザーをメンターとして承認する</h5>
+      <p class="card-text">ユーザーとメンターの切り替えができます</p>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentor_approval_mentors_path %></button>
+    </div>
+
+    <div class="card col-4" style="width: 18rem;">
+      <div>
+        <%= image_tag "search_img3.jpg", class:"card-img-top", alt:"..." %>
+      </div>
+      <h5 class="card-title">検索</h5>
+      <p class="card-text">プロフィール検索できます</p>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", list_up_profiles_path %></button>
+    </div>
+
   </div>
 </div>
-
-<%= render "shared/footer" %>

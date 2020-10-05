@@ -18,6 +18,8 @@ class MessagesController < ApplicationController
       @room.status = 1
       if @message.content == "解決済" || @message.content == "解決済み"
         @room.status = 2
+      elsif @message.content == "再開"
+        @room.status = 1
       end
       @room.save
       redirect_to room_messages_path

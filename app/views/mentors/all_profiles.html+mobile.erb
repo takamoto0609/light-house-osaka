@@ -1,0 +1,27 @@
+<%= render "shared/header" %>
+
+<div class="shared_body overflow-auto">
+  <% @profiles.each do |profile| %>
+    <td>
+    <br>
+    <li>
+      ID:<%= profile.user_id %>
+      <%= profile.family_name %>
+      <%= profile.given_name %>
+      <%= profile.family_name_kana %>
+      <%= profile.given_name_kana %>
+      <%= profile.sex.name %>
+      <%= profile.age_group.name %>
+      <%= profile.blood_type.name %>
+      <%= profile.birth_day %>
+      <%= profile.zodiac_sign.name %>
+      <%= profile.address.name %>
+      <%= profile.occupation.name %>
+      <%= profile.work_place %>
+      <br>
+      自己紹介：<%= profile.summary %>
+    </li>
+    <% end %>
+</div>
+
+<%= render "shared/footer" %>

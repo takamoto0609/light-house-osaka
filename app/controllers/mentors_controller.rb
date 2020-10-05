@@ -43,6 +43,8 @@ class MentorsController < ApplicationController
 
   def users_search
     @results = @p.result.includes(:sex, :blood_type, :address, :occupation)
+    @users = User.all
+    @user = User.find_by(id: params[:format])
   end
 
   private

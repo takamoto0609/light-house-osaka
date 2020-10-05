@@ -1,0 +1,14 @@
+<%= render "shared/header" %>
+
+<div class="shared_body overflow-auto">
+
+  <%= render "profiles/search_form" %>
+
+  <div class="d-flex flex-column"> <%#縦並び%>
+    <button type="button"
+      class="btn btn-outline-primary m-2"><%= link_to "全プロフィール一覧", all_profiles_mentors_path %></button>
+    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "全ルーム一覧", all_rooms_mentors_path %></button>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

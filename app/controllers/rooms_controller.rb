@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :detect_devise_variant
+
   def index
     @header_title = "ライブラリ"
   end
@@ -19,6 +21,7 @@ class RoomsController < ApplicationController
 
   def home
     @header_title = "ホーム"
+    @room = Room.new
     unless user_signed_in?
       render "rooms/log_in"
     end
@@ -35,6 +38,13 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name, :content).merge(user_id: current_user.id)
+  end
+
+  def detect_devise_variant
+    ua = request.user_agent
+    if(ua.include?('Mobile') || ua.include?('Android'))
+      request.variant = :mobile
+    end
   end
 
 end

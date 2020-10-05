@@ -1,34 +1,146 @@
 <%= render "shared/header" %>
 
-<div class="shared_body">
-ユーザー名：<%= current_user.name %>
-  <div class="d-flex flex-column"> <%#縦並び%>
+<div class="home_page row">
 
-    <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "新規プロフィール作成", new_profile_path %></button>
-    <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "Myプロフィール", profile_path(:user) %></button>
-    <% end %>
-
-    <button type="button"
-      class="btn btn-outline-primary m-2"><%= link_to "公認メンター一覧", mentors_list_up_profiles_path %></button>
-
-    <% if user_signed_in? %>
-    <button type="button"
-      class="btn btn-outline-primary m-2"><%= link_to "ログイン情報編集", edit_user_registration_path %></button>
-    <button type="button"
-      class="btn btn-outline-primary m-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
-    <% else %>
-    <button type="button"
-      class="btn btn-outline-primary m-2"><%= link_to "新規ユーザー登録", new_user_registration_path %></button>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "ログイン", new_user_session_path %></button>
-    <% end %>
-
-    <% if user_signed_in? %>
-    <button type="button" class="btn btn-outline-primary m-2"><%= link_to "🔐管理者用画面", mentors_path %></button>
-    <% end %>
-
+  <%#メンターのみ使える機能%>
+  <% if current_user.mentor == 1%>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "rooms_img2.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">全ルーム一覧</h5>
+    <p class="card-text">全てのルームが閲覧できます</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_rooms_mentors_path %></button>
   </div>
-</div>
 
-<%= render "shared/footer" %>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "search_img3.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">検索</h5>
+    <p class="card-text">プロフィール検索できます</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", list_up_profiles_path %></button>
+  </div>
+  <% end %>
+  <%#メンターのみ使える機能%>
+
+  <%#ユーザーのみ使える機能%>
+  <% if current_user.mentor == 0%>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "start_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">新規ルーム作成</h5>
+    <p class="card-text">新しく相談ルームを作成できます</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#",id:"modal_new_room" %></button>
+    <div class="modal_window" , id="modal_window_new_room">
+      <div class="modal_new_room" , style="width: 50%;">
+        <%=form_with model: @room, local: true do |f|%><form>
+          <%= render 'shared/error_messages', model: f.object %>
+          <h3>
+            ルーム名
+          </h3>
+          <br>
+          <div>
+            <%= f.text_field :name, class:"form-control", placeholder: 'ルーム名を入力してください'%>
+          </div>
+          <br><br>
+          <h3>
+            相談内容
+          </h3>
+          <div>
+            <%= f.text_area :content, class:"form-control", placeholder: '相談内容を入力してください'%>
+          </div>
+          <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
+          <br>
+          <button class="btn btn-primary" type="submit">作成</button>
+
+          <% end %>
+          <br>
+          <button type="button" class="btn modal_room_select_btn"><%= link_to "ホームに戻る", root_path %></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "mentor_img2.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title"><%= current_user.name%>さんのルーム</h5>
+    <p class="card-text">作成したルームが見れます。<br>メンターが回答するとタグが<span class="badge badge-pill badge-danger">新規</span>から<span
+        class="badge badge-pill badge-warning">相談中</span>に変わります。</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" ,id:"modal_show_room"%></button>
+    <div class="modal_window" , id="modal_window_show_room">
+      <div class="modal_room_select">
+        <h3>
+          ルームを選んでください
+        </h3>
+        <% @rooms.where(user_id: current_user.id).each do |room| %>
+        <div>
+          <button type="button" class="btn modal_room_select_btn"><%= link_to room.name, room_messages_path(room) %>
+            <% if room.status == 0 %>
+            <span class="badge badge-pill badge-danger">新規</span>
+            <% elsif room.status == 1 %>
+            <span class="badge badge-pill badge-warning">相談中</span>
+            <% elsif room.status == 2 %>
+            <span class="badge badge-pill badge-success">解決済</span>
+            <% end %>
+          </button>
+          <br>
+        </div>
+        <% end %>
+        <button type="button" class="btn modal_room_select_btn"><%= link_to "ホームに戻る", root_path %></button>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%#ユーザーのみ使える機能%>
+
+  <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "top_girl_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">プロフィール</h5>
+    <p class="card-text">プロフィールの登録ができます</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", new_profile_path %></button>
+  </div>
+  <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "top_girl_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">マイプロフィール</h5>
+    <p class="card-text">プロフィールの閲覧・編集ができます</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", profile_path(:user) %></button>
+  </div>
+  <% end %>
+
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "mentor_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">公認メンター一覧</h5>
+    <p class="card-text">悩みを共に解決していくメンターの皆さんです</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentors_list_up_profiles_path %></button>
+  </div>
+
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "edit_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">ログイン情報編集</h5>
+    <p class="card-text">ログイン情報を編集できます</p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", edit_user_registration_path %></button>
+  </div>
+
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "change_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">管理人室</h5>
+    <p class="card-text"></p>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentor_approval_mentors_path %></button>
+  </div>
+
+</div>
