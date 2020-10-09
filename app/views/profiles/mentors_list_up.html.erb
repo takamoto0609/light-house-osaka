@@ -1,25 +1,19 @@
 <%= render "shared/header" %>
 
-<div class="row">
+<div class="shared_page d-flex">
 
-  <div class="col-3">
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
   </div>
 
-  <div class="shared_body overflow-auto col-9">
+  <div class="mentors_list">
     <div class="row">
       <% @profiles.each do |profile| %>
-      <% if profile.user.mentor == 1 %>
-      <div class="card col-4">
+      <% if profile.user.mentor == 2 %>
+      <div class="card col-4 m-1">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">氏名：<%= profile.family_name %><%= profile.given_name %></li>
-          <li class="list-group-item">フリガナ：<%= profile.family_name_kana %><%= profile.given_name_kana %></li>
+          <li class="list-group-item">氏名：<%= profile.user.family_name %><%= profile.user.given_name %></li>
+          <li class="list-group-item">フリガナ：<%= profile.user.family_name_kana %><%= profile.user.given_name_kana %></li>
           <li class="list-group-item">性別：<%= profile.sex.name %></li>
           <li class="list-group-item">年齢：<%= profile.age_group.name %></li>
           <li class="list-group-item">血液型：<%= profile.blood_type.name %></li>

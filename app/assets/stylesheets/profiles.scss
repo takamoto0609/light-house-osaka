@@ -1,3 +1,18 @@
-// Place all the styles related to the profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.mentors_list {
+  width: calc(100% - 200px);
+}
+
+.search_unit{
+  display: block;
+  margin: 12px;
+  &_form {
+    width: 100%;
+    margin-bottom: 24px;
+    //height: 20vh;
+    //background-color: aqua;
+  }
+  &_result{
+    width: 100%;
+    //margin-top: 20vh;
+  }
+}

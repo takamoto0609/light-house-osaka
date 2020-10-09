@@ -1,7 +1,13 @@
 <%= render "shared/header" %>
 
-<div class="shared_body overflow-auto">
-  <%= render "new_profile" %>
-</div>
+<div class="shared_page d-flex">
 
-<%= render "shared/footer" %>
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
+  </div>
+
+  <div class="shared_page_R">
+    <%= render "new_profile" %>
+  </div>
+
+</div>

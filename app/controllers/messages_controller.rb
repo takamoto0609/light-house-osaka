@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
   def index #room_messages_path(room)
+    @header_title = "相談中..."
     @message = Message.new
     @room = Room.find(params[:room_id])
     @messages = @room.messages.includes(:user)
+    get_room_user
   end
 
   def new
@@ -10,6 +12,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    get_room_user
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
     if @message.valid?
@@ -32,5 +35,18 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content).merge(user_id: current_user.id)
+  end
+
+  def get_room_user
+    @super_rooms = Room.joins(:user).order(:status).order(user_id: "ASC")
+    .select("
+      rooms.id,
+      rooms.name,
+      content,
+      status,
+      user_id,
+      users.family_name AS user_family_name,
+      users.given_name AS user_given_name
+      ")
   end
 end

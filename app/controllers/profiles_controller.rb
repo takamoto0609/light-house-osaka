@@ -70,6 +70,7 @@ class ProfilesController < ApplicationController
   def mentors_list_up
     @header_title = "公認メンターの皆さん"
     @profiles = Profile.all
+    # @users = User.all
   end
 
   private

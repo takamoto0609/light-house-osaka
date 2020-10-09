@@ -1,22 +1,6 @@
 <%= form_with model: @profile, local: true do |f|%>
   <%= render 'shared/error_messages', model: f.object %>
   
-  <h5>氏名(姓)を入力してください</h5>
-  <div class="form-input">
-    <%= f.text_field :family_name, class: 'form-control', placeholder: 'Please enter.' %>
-  </div>
-  <h5>氏名(名)を入力してください</h5>
-  <div class="form-input">
-    <%= f.text_field :given_name, class: 'form-control', placeholder: 'Please enter.' %>
-  </div>
-  <h5>フリガナ(姓)を入力してください</h5>
-  <div class="form-input">
-    <%= f.text_field :family_name_kana, class: 'form-control', placeholder: 'Please enter.' %>
-  </div>
-  <h5>フリガナ(名)を入力してください</h5>
-  <div class="form-input">
-    <%= f.text_field :given_name_kana, class: 'form-control', placeholder: 'Please enter.' %>
-  </div>
   <h5>性別を選択してください</h5>
   <div class="form-input">
     <%= f.collection_select(:sex_id, Sex.all, :id, :name, {include_blank: "---"}, {class: 'form-control-sm'}) %>

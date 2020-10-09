@@ -1,20 +1,24 @@
-<div class="loginPage">
-  <div class="container">
-    <div class="loginPage_contents">
-      <h1 class="h3 loginPage_contents_title">原因から課題を解決しよう！</h1>
-      <%= link_to "ログイン", "#", class: "btn loginPage_contents_main_btn", id:"modal_open"%>
-      <div class="modal_window" , id="modal_window">
-        <div class="modal_body">
-          <h4>
-            ログイン方法を選んでください
-          </h4>
-          <%= link_to "メールアドレスでログイン", new_user_session_path, class: "btn loginPage_contents_btn", id:"email_login"%>
-          <%= link_to "Googleでログイン(未実装)", new_user_session_path, class: "btn loginPage_contents_btn", id:"google_login"%>
-          <%= link_to "Facebookでログイン(未実装)", new_user_session_path, class: "btn loginPage_contents_btn", id:"facebook_login"%>
-          <%= link_to "Twitterでログイン(未実装)", new_user_session_path, class: "btn loginPage_contents_btn", id:"twitter_login"%>
-          <%= link_to "トップページに戻る", root_path, class: "btn loginPage_contents_btn", id:"back_top_page"%>
-        </div>
-      </div>
+<div class="login_page">
+  <div class="login_page_L">
+    <div class="login_page_L_message_box">
+      <h5><b>⚙問題が起きる仕組みを知りましょう。</b></h5><br><br>
+      <h5><b>✏️解決までの考え方を身に付けましょう。</b></h5><br><br>
+      <h5><b>💡原因から課題を解決しましょう。</b></h5>
+    </div>
+  </div>
+  <div class="login_page_R">
+    <div class="login_page_R_header">
+    </div>
+    <div class="login_page_R_logo">
+      <i class="fas fa-hat-wizard fa-3x"></i>
+    </div>
+    <div class="login_page_R_message_box">
+      <h3><b>あなたの人生をVery Easyに</b></h3>
+    </div>
+    <div class="login_page_R_footer">
+      <h6><b>Buffアプリをはじめよう</b></h6>
+      <%= link_to "新規アカウント作成", new_user_registration_path, class: "btn login_page_R_login_btn", id:"email_login"%>
+      <%= link_to "メールアドレスでログイン", new_user_session_path, class: "btn login_page_R_login_btn", id:"email_login"%>
     </div>
   </div>
 </div>

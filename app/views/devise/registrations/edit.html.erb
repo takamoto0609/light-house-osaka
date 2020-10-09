@@ -1,80 +1,62 @@
 <div class="shared_header row">
-  <div class="h4 p-2 text-white col-9">
-    ログイン情報編集
+  <div class="h4 p-2 text-white col-11">
+    <i class="fas fa-hat-wizard fa-1x"></i>
+    <b>ログイン情報編集</b>
   </div>
-
-  <%#雷マーク%>
-  <div class="col-3">
-    <div class="row">
-      <div class="col-2">
-        <%= link_to "#" do %>
-        <span class="fa-stack fa-lg">
-          <i class="fas fa-bolt fa-stack-1x"></i>
-          <i class="far fa-circle fa-stack-2x text-primary"></i>
-        </span>
-        <% end %>
-      </div>
-
-      <%#設定%>
-      <div class="col-2">
-        <%= link_to "#" do %>
-        <span class="fa-stack fa-lg">
-          <i class="fas fa-cog fa-stack-1x"></i>
-          <i class="far fa-circle fa-stack-2x text-primary"></i>
-        </span>
-        <% end %>
-      </div>
-      <div class="col-8">
-        <button type="button"
-          class="btn btn-outline-primary m-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
-      </div>
-
+  <div class="col-1 row">
+    <%#水晶アイコン%>
+    <div class="crystal" , id="modal_gear">
+      🔮
     </div>
+    <div class="modal_window_gear" , id="modal_window_gear">
+      <div class="modal_window_box">
+        <button type="button"
+          class="btn modal_window_gear_btn"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+        <button type="button" class="btn modal_window_gear_btn"><%= link_to "アプリの説明書", rooms_path %></button>
+        <button type="button"
+          class="btn modal_window_gear_btn"><%= link_to "🔒管理人室", mentor_approval_mentors_path %></button>
+        <button type="button" class="btn modal_window_gear_btn"><%= link_to "ホームに戻る", root_path %></button>
+      </div>
+    </div>
+    <%#水晶アイコン%>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-3">
+<div class="shared_page d-flex">
 
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
   </div>
 
-  <div class="shared_body overflow-auto col-9">
+  <div class="shared_page_R overflow-auto">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :email %><br />
+      メールアドレス<br>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
-
+    <br>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
     <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      新しいパスワード <i>(変更しない場合は空欄で結構です。)</i><br>
       <%= f.password_field :password, autocomplete: "new-password" %>
       <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <br><em>※ <%= @minimum_password_length %> 文字以上でお願いします。</em>
       <% end %>
     </div>
-
+    <br>
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <i>(確認のため同じパスワードを入力してください。)</i><br>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
-
+    <br>
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      現在のパスワード<br />
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
     <br>

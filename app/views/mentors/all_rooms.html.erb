@@ -1,48 +1,36 @@
 <%= render "shared/header" %>
 
-<div class="row">
-  <div class="col-3">
+<div class="shared_page d-flex">
 
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
-
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "search_img3.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">検索</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", list_up_profiles_path %></button>
-    </div>
-
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">全プロフィール一覧</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_profiles_mentors_path %></button>
-    </div>
-
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
+    <%= render "shared/cards/search" %>
+    <%= render "shared/cards/all.profiles" %>
   </div>
 
-  <div class="overflow-auto col-9">
-    <% @rooms.each do |room| %>
-    ユーザーID：<%= room.user_id %>
-    <div>
-      <button type="button" class="btn btn-outline-primary"><%= link_to room.name, room_messages_path(room) %></button>
-      <% if room.status == 0 %>
-      <span class="badge badge-pill badge-danger">新規</span>
-      <% elsif room.status == 1 %>
-      <span class="badge badge-pill badge-warning">相談中</span>
-      <% elsif room.status == 2 %>
-      <span class="badge badge-pill badge-success">解決済</span>
+  <div class="search_unit">
+    <div class="search_unit_form">
+      <%= render "profiles/search_form" %>
+    </div>
+
+    <div class="search_unit_result">
+      <% @super_rooms.each do |room| %>
+      <%= room.user_family_name %><%= room.user_given_name %>
+      (ユーザーID：<%= room.user_id %>)
+      <% %>
+      <div>
+        <button type="button"
+          class="btn btn-outline-primary"><%= link_to room.name, room_messages_path(room) %></button>
+        <% if room.status == 0 %>
+        <span class="badge badge-pill badge-danger">新規</span>
+        <% elsif room.status == 1 %>
+        <span class="badge badge-pill badge-warning">相談中</span>
+        <% elsif room.status == 2 %>
+        <span class="badge badge-pill badge-success">解決済</span>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <% end %>
   </div>
 
 </div>

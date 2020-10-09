@@ -3,7 +3,10 @@ class MentorsController < ApplicationController
   before_action :search_profile
 
   def index
-    @header_title = "管理者用画面"
+    @user = User.find_by(id: current_user.id)
+    @user.mentor = 0
+    @user.save
+    redirect_to home_rooms_path
   end
 
   # メンターとして承認する
@@ -16,10 +19,10 @@ class MentorsController < ApplicationController
     @header_title = "メンター・ユーザー切り替え"
     @users = User.all
     @user = User.find_by(id: params[:format])
-    if @user.mentor == 0
+    if @user.mentor == 1
+      @user.mentor = 2
+    elsif @user.mentor == 2
       @user.mentor = 1
-    elsif @user.mentor == 1
-      @user.mentor = 0
     end
     @user.save
     render "mentor_approval"
@@ -33,6 +36,7 @@ class MentorsController < ApplicationController
   def all_rooms
     @header_title = "全ルーム一覧"
     @rooms = Room.all.order(:status).order(user_id: "ASC")
+    get_room_user
   end
 
   def all_profiles
@@ -57,6 +61,9 @@ class MentorsController < ApplicationController
 
   def search_profile
     @p = Profile.ransack(params[:q])  # 検索オブジェクトを生成
+    @results = @p.result
+    @profiles = Profile.all.order(:user_id)
+    set_profile_column
   end
 
   def set_profile_column
@@ -66,5 +73,17 @@ class MentorsController < ApplicationController
     @profile_given_name_kana = Profile.select("given_name_kana").distinct
     @profile_birth_day = Profile.select("birth_day").distinct
   end
-  
+
+  def get_room_user
+    @super_rooms = Room.joins(:user).order(:status).order(user_id: "ASC")
+    .select("
+      rooms.id,
+      rooms.name,
+      content,
+      status,
+      user_id,
+      users.family_name AS user_family_name,
+      users.given_name AS user_given_name
+      ")
+  end
 end

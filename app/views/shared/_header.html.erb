@@ -1,34 +1,27 @@
 <div class="shared_header row">
-  <div class="h4 p-2 text-white col-9">
-    <%= @header_title %>
+  <div class="h4 p-2 text-white col-11">
+    <i class="fas fa-hat-wizard fa-1x"></i>
+    <b><%= @header_title %></b>
   </div>
 
-  <%#雷マーク%>
-  <div class="col-3">
-    <div class="row">
-      <div class="col-2">
-        <%= link_to "#" do %>
-        <span class="fa-stack fa-lg">
-          <i class="fas fa-bolt fa-stack-1x"></i>
-          <i class="far fa-circle fa-stack-2x text-primary"></i>
-        </span>
-        <% end %>
-      </div>
-
-      <%#設定%>
-      <div class="col-2">
-        <%= link_to "#" do %>
-        <span class="fa-stack fa-lg">
-          <i class="fas fa-cog fa-stack-1x"></i>
-          <i class="far fa-circle fa-stack-2x text-primary"></i>
-        </span>
-        <% end %>
-      </div>
-      <div class="col-8">
-        <button type="button"
-        class="btn btn-outline-primary m-2"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
-      </div>
-      
+  <div class="col-1 row">
+    <%#歯車アイコン%>
+    <div class="crystal" , id="modal_gear">
+      🔮
     </div>
+    <div class="modal_window_gear" , id="modal_window_gear">
+      <div class="modal_window_box">
+        <button type="button"
+          class="btn modal_window_gear_btn"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+        <button type="button" class="btn modal_window_gear_btn"><%= link_to "アプリの説明書", rooms_path %></button>
+        <button type="button"
+          class="btn modal_window_gear_btn"><%= link_to "🔒管理人室", mentor_approval_mentors_path %></button>
+        <button type="button" class="btn modal_window_gear_btn"><%= link_to "ホームに戻る", root_path %></button>
+        <%#テスト機能%>
+        <button type="button" class="btn modal_window_gear_btn"><%= link_to "初期化", mentors_path %></button>
+        <%#テスト機能%>
+      </div>
+    </div>
+    <%#歯車アイコン%>
   </div>
 </div>

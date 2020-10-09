@@ -10,10 +10,6 @@ class Profile < ApplicationRecord
   belongs_to_active_hash :age_group
 
   with_options presence: true do
-    validates :family_name
-    validates :given_name
-    validates :family_name_kana
-    validates :given_name_kana
     validates :sex_id
     validates :blood_type_id
     validates :birth_day

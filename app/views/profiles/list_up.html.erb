@@ -1,38 +1,17 @@
 <%= render "shared/header" %>
 
-<div class="row">
-  <div class="col-3">
+<div class="shared_page d-flex">
 
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
-
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">全プロフィール一覧</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_profiles_mentors_path %></button>
-    </div>
-
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "rooms_img2.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">全ルーム一覧</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_rooms_mentors_path %></button>
-    </div>
-
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
+    <%= render "shared/cards/all.profiles" %>
+    <%= render "shared/cards/all.rooms" %>
   </div>
 
-  <div class="shared_body overflow-auto col-9">
-
-    <%= render "profiles/search_form" %>
-
+  <div class="search_unit">
+    <div class="search_unit_form">
+      <%= render "profiles/search_form" %>
+    </div>
   </div>
 
 </div>

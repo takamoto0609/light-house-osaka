@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_many :rooms, through: :room_users
   has_many :messages
   has_one  :profile
+
+  validates :family_name,      presence: true
+  validates :given_name,       presence: true
+  validates :family_name_kana, presence: true
+  validates :given_name_kana,  presence: true
 end
 
 # class User < ActiveRecord::Base

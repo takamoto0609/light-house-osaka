@@ -1,48 +1,14 @@
 <%= render "shared/header" %>
 
-<div class="row">
-  <div class="col-3">
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
-
-    <div class="card col" style="width: 18rem;">
-    <div>
-      <%= image_tag "mentor_img2.jpg", class:"card-img-top", alt:"..." %>
-    </div>
-    <h5 class="card-title">他のルームも見る</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" ,id:"modal_show_room2"%></button>
-    <div class="modal_window" , id="modal_window_show_room2">
-      <div class="modal_room_select">
-        <h3>
-          ルームを選んでください
-        </h3>
-        <% @rooms.where(user_id: current_user.id).each do |room| %>
-        <div>
-          <button type="button" class="btn modal_room_select_btn"><%= link_to room.name, room_messages_path(room) %>
-            <% if room.status == 0 %>
-            <span class="badge badge-pill badge-danger">新規</span>
-            <% elsif room.status == 1 %>
-            <span class="badge badge-pill badge-warning">相談中</span>
-            <% elsif room.status == 2 %>
-            <span class="badge badge-pill badge-success">解決済</span>
-            <% end %>
-          </button>
-          <br>
-        </div>
-        <% end %>
-      </div>
-    </div>
+<div class="shared_page d-flex">
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
+    <% if current_user.mentor == 2%>
+    <%= render "shared/cards/all.rooms" %>
+    <% end %>
   </div>
 
-  </div>
-
-  <div class="col-9 overflow-auto">
+  <div class="shared_page_R">
     <%= render "main_chat" %>
   </div>
-
 </div>

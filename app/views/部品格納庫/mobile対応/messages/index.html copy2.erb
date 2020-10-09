@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<div class="shared_page d-flex">
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
+    <% if current_user.mentor == 2%>
+    <%= render "shared/cards/all.rooms" %>
+    <% end %>
+
+    <% @super_rooms.where(user_id: current_user.id).each do |room| %>
+    <div class="card col" style="width: 18rem;">
+      <h5 class="card-title"><%= room.name %>
+        <% if room.status == 0 %>
+        <span class="badge badge-pill badge-danger">新規</span>
+        <% elsif room.status == 1 %>
+        <span class="badge badge-pill badge-warning">相談中</span>
+        <% elsif room.status == 2 %>
+        <span class="badge badge-pill badge-success">解決済</span>
+        <% end %>
+      </h5>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Enter", room_messages_path(room) %></button>
+    </div>
+    <% end %>
+
+  </div>
+
+  <div class="shared_page_R">
+    <%= render "main_chat" %>
+  </div>
+</div>

@@ -1,46 +1,34 @@
 <%= render "shared/header" %>
-<div class="row">
+<div class="shared_page d-flex">
 
-  <div class="col-3">
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
   </div>
 
-  <div class="col-9">
-    <div class="d-flex flex-column"> <%#縦並び%>
-      <div class="row">
-        <% @users.each do |user| %>
-        <div class="card col-4" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%= user.name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
+  <div class="mentor_approval d-flex">
+    <% @users.each do |user| %>
+    <div class="card mentor_approval_card">
+      <div class="card-body">
+        <h5 class="card-title"><%= user.family_name %><%= user.given_name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
 
-            <% if user.mentor == 0 %>
-            ユーザー
-            <% elsif user.mentor == 1 %>
-            メンター
-            <% end %>
-
-            <%#切り替えボタン%>
-            <%= link_to mentor_user_mentors_path(user.id) do %>
-
-            <span class="fa-stack fa-lg">
-              <i class="fas fa-sync-alt fa-stack-1x"></i>
-              <i class="far fa-circle fa-stack-2x text-primary"></i>
-            </span>
-
-            <% end %>
-
-          </div>
-        </div>
+        <% if user.mentor == 1 %>
+        ユーザー
+        <% elsif user.mentor == 2 %>
+        メンター
         <% end %>
+
+        <%#切り替えボタン%>
+        <%= link_to mentor_user_mentors_path(user.id) do %>
+        <span class="fa-stack fa-lg">
+          <i class="fas fa-sync-alt fa-stack-1x"></i>
+          <i class="far fa-circle fa-stack-2x text-primary"></i>
+        </span>
+        <% end %>
+        <%#切り替えボタン%>
       </div>
     </div>
+    <% end %>
   </div>
 
 </div>

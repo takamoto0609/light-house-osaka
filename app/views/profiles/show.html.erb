@@ -1,26 +1,14 @@
 <%= render "shared/header" %>
 
-<div class="row">
-  <div class="col-3">
+<div class="shared_page d-flex">
 
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "home_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">ホームへ戻る</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Back", root_path %></button>
-    </div>
-
-    <div class="card col" style="width: 18rem;">
-      <div>
-        <%= image_tag "edit_img.jpg", class:"card-img-top", alt:"..." %>
-      </div>
-      <h5 class="card-title">編集する</h5>
-      <button type="button" class="btn btn-outline-primary"><%= link_to "Go", edit_profile_path %></button>
-    </div>
+  <div class="shared_page_L">
+    <%= render "shared/cards/home" %>
+    <%= render "shared/cards/edit.profile" %>
   </div>
 
-  <div class="shared_body overflow-auto col-9">
+  <div class="shared_page_R">
     <%= render "show_profile" %>
   </div>
+
 </div>

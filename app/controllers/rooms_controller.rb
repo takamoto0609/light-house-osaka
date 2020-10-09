@@ -2,11 +2,14 @@ class RoomsController < ApplicationController
   before_action :detect_devise_variant
 
   def index
-    @header_title = "ライブラリ"
+    @header_title = "アプリの説明書"
+    @user = User.find_by(id: current_user.id)
+    @user.mentor = 1
+    @user.save
   end
 
   def new
-    @header_title = "新規ルーム作成"
+    @header_title = "相談ルーム作成"
     @room = Room.new
   end
 

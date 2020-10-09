@@ -2,36 +2,48 @@
 
 <div class="home_page row">
 
-  <%#メンターのみ使える機能%>
-  <% if current_user.mentor == 1%>
+  <%#新規ユーザーへの説明機能%>
+  <% if current_user.mentor == 0%>
   <div class="card col-4" style="width: 18rem;">
     <div>
-      <%= image_tag "rooms_img2.jpg", class:"card-img-top", alt:"..." %>
+      <%= image_tag "navi_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">Buffアプリへようこそ🎉🎉</h5>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Welcome!", rooms_path %></button>
+    <p class="card-text">このアプリの使い方を説明します。</p>
+  </div>
+  <% end %>
+  <%#新規ユーザーへの説明機能%>
+
+  <%#メンターのみ使える機能%>
+  <% if current_user.mentor == 2%>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "rooms_img3.jpg",class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">全ルーム一覧</h5>
-    <p class="card-text">全てのルームが閲覧できます</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_rooms_mentors_path %></button>
+    <p class="card-text">全てのルームが閲覧できます。</p>
   </div>
 
   <div class="card col-4" style="width: 18rem;">
     <div>
-      <%= image_tag "search_img3.jpg", class:"card-img-top", alt:"..." %>
+      <%= image_tag "search_img7.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">検索</h5>
-    <p class="card-text">プロフィール検索できます</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", list_up_profiles_path %></button>
+    <p class="card-text">プロフィール検索できます。</p>
   </div>
   <% end %>
   <%#メンターのみ使える機能%>
 
   <%#ユーザーのみ使える機能%>
-  <% if current_user.mentor == 0%>
+  <% if current_user.mentor == 1%>
   <div class="card col-4" style="width: 18rem;">
     <div>
-      <%= image_tag "start_img.jpg", class:"card-img-top", alt:"..." %>
+      <%= image_tag "start_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">新規ルーム作成</h5>
-    <p class="card-text">新しく相談ルームを作成できます</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#",id:"modal_new_room" %></button>
     <div class="modal_window" , id="modal_window_new_room">
       <div class="modal_new_room" , style="width: 50%;">
@@ -60,15 +72,16 @@
           <button type="button" class="btn modal_room_select_btn"><%= link_to "ホームに戻る", root_path %></button>
       </div>
     </div>
+    <p class="card-text">新しく相談ルームを作成できます。<br>
+      新しく作成されたルームには<span class="badge badge-pill badge-danger">新規</span>タグがつきます。
+    </p>
   </div>
 
   <div class="card col-4" style="width: 18rem;">
     <div>
       <%= image_tag "mentor_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title"><%= current_user.name%>さんのルーム</h5>
-    <p class="card-text">作成したルームが見れます。<br>メンターが回答するとタグが<span class="badge badge-pill badge-danger">新規</span>から<span
-        class="badge badge-pill badge-warning">相談中</span>に変わります。</p>
+    <h5 class="card-title">ルーム</h5>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" ,id:"modal_show_room"%></button>
     <div class="modal_window" , id="modal_window_show_room">
       <div class="modal_room_select">
@@ -92,27 +105,40 @@
         <button type="button" class="btn modal_room_select_btn"><%= link_to "ホームに戻る", root_path %></button>
       </div>
     </div>
+    <p class="card-text">作成したルームが見れます。<br>メンターが回答するとタグが<span class="badge badge-pill badge-warning">相談中</span>に変わります。
+    </p>
   </div>
   <% end %>
   <%#ユーザーのみ使える機能%>
 
+  <%#アプリの説明書を見た後使える機能%>
+  <% if current_user.mentor != 0%>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "book_img2.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title">ライブラリ</h5>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" %></button>
+    <p class="card-text">古今東西の有益な情報を集めました。</p>
+  </div>
+
   <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
   <div class="card col-4" style="width: 18rem;">
     <div>
-      <%= image_tag "top_girl_img.jpg", class:"card-img-top", alt:"..." %>
+      <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">プロフィール</h5>
-    <p class="card-text">プロフィールの登録ができます</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", new_profile_path %></button>
+    <p class="card-text">プロフィールを充実させましょう！</p>
   </div>
   <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
   <div class="card col-4" style="width: 18rem;">
     <div>
-      <%= image_tag "top_girl_img.jpg", class:"card-img-top", alt:"..." %>
+      <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">マイプロフィール</h5>
-    <p class="card-text">プロフィールの閲覧・編集ができます</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", profile_path(:user) %></button>
+    <p class="card-text">プロフィールの閲覧・編集ができます。</p>
   </div>
   <% end %>
 
@@ -121,8 +147,8 @@
       <%= image_tag "mentor_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">公認メンター一覧</h5>
-    <p class="card-text">悩みを共に解決していくメンターの皆さんです</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentors_list_up_profiles_path %></button>
+    <p class="card-text">あなたと共に成長していくメンターの皆さんです。</p>
   </div>
 
   <div class="card col-4" style="width: 18rem;">
@@ -130,17 +156,10 @@
       <%= image_tag "edit_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">ログイン情報編集</h5>
-    <p class="card-text">ログイン情報を編集できます</p>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", edit_user_registration_path %></button>
+    <p class="card-text">ログインの際に使うメールアドレスやパスワードを変更できます。</p>
   </div>
-
-  <div class="card col-4" style="width: 18rem;">
-    <div>
-      <%= image_tag "change_img.jpg", class:"card-img-top", alt:"..." %>
-    </div>
-    <h5 class="card-title">管理人室</h5>
-    <p class="card-text"></p>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentor_approval_mentors_path %></button>
-  </div>
+  <% end %>
+  <%#アプリの説明書を見た後使える機能%>
 
 </div>
