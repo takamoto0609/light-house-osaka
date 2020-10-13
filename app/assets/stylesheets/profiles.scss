@@ -1,9 +1,13 @@
 .mentors_list {
   width: calc(100% - 200px);
+  &_card{
+    width: 500px;
+  }
 }
 
 .search_unit{
   display: block;
+  overflow: auto;
   margin: 12px;
   &_form {
     width: 100%;

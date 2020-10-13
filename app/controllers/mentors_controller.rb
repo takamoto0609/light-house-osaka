@@ -1,5 +1,5 @@
 class MentorsController < ApplicationController
-  before_action :basic_auth
+  # before_action :basic_auth
   before_action :search_profile
 
   def index
@@ -11,6 +11,7 @@ class MentorsController < ApplicationController
 
   # メンターとして承認する
   def mentor_approval
+    basic_auth
     @header_title = "メンター・ユーザー切り替え"
     @users = User.all
   end

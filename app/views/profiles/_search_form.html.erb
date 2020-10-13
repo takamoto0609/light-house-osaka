@@ -20,8 +20,9 @@
   <%= f.label :occupation_id_eq, '職業' %>
   <%= f.collection_select :occupation_id_eq, Occupation.all, :id, :name,  include_blank: '指定なし' %>
   <br>
-  <%= f.submit '検索', class:'btn btn-primary' %>
+  <%= f.submit 'プロフィール検索', class:'btn btn-primary' %>
     <button type="button" class="btn btn-outline-primary"><%= link_to "検索条件をクリア", list_up_profiles_path %></button>
   <br>
+  <h6>選択肢がないユーザー、結果が表示されないユーザーはプロフィール未登録です。</h6>
   <% end %>
 </div>

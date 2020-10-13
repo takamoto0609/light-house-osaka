@@ -4,14 +4,19 @@
 
   <%#新規ユーザーへの説明機能%>
   <% if current_user.mentor == 0%>
+  <%= render "shared/cards/wall" %>
   <div class="card col-4" style="width: 18rem;">
     <div>
       <%= image_tag "navi_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">Buffアプリへようこそ🎉🎉</h5>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Welcome!", rooms_path %></button>
-    <p class="card-text">このアプリの使い方を説明します。</p>
+    <br>
   </div>
+  <%= render "shared/cards/wall" %>
+  <%= render "shared/cards/wall" %>
+  <%= render "shared/cards/wall" %>
+  <%= render "shared/cards/wall" %>
   <% end %>
   <%#新規ユーザーへの説明機能%>
 
@@ -81,7 +86,7 @@
     <div>
       <%= image_tag "mentor_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">ルーム</h5>
+    <h5 class="card-title">マイルーム</h5>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" ,id:"modal_show_room"%></button>
     <div class="modal_window" , id="modal_window_show_room">
       <div class="modal_room_select">
@@ -118,8 +123,9 @@
       <%= image_tag "book_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
     <h5 class="card-title">ライブラリ</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" %></button>
-    <p class="card-text">古今東西の有益な情報を集めました。</p>
+    <%# <button type="button" class="btn btn-outline-primary"><%= link_to "Go", library_index_path%></button>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "改装中...", "#"%></button>
+    <p class="card-text">有益な情報を厳選してお届けします。</p>
   </div>
 
   <% if user_signed_in? && Profile.all.where(user_id: current_user.id).blank? %>
@@ -127,7 +133,7 @@
     <div>
       <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">プロフィール</h5>
+    <h5 class="card-title">新規プロフィール</h5>
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", new_profile_path %></button>
     <p class="card-text">プロフィールを充実させましょう！</p>
   </div>
@@ -150,16 +156,10 @@
     <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentors_list_up_profiles_path %></button>
     <p class="card-text">あなたと共に成長していくメンターの皆さんです。</p>
   </div>
-
-  <div class="card col-4" style="width: 18rem;">
-    <div>
-      <%= image_tag "edit_img.jpg", class:"card-img-top", alt:"..." %>
-    </div>
-    <h5 class="card-title">ログイン情報編集</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", edit_user_registration_path %></button>
-    <p class="card-text">ログインの際に使うメールアドレスやパスワードを変更できます。</p>
-  </div>
+  <%= render "shared/cards/wall" %>
   <% end %>
   <%#アプリの説明書を見た後使える機能%>
 
 </div>
+
+<%= render "shared/footer" %>

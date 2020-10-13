@@ -7,24 +7,18 @@
   </div>
 
   <div class="mentors_list">
-    <div class="row">
+    <div class="d-flex">
       <% @profiles.each do |profile| %>
       <% if profile.user.mentor == 2 %>
-      <div class="card col-4 m-1">
+      <div class="card mentors_list_card m-1">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">氏名：<%= profile.user.family_name %><%= profile.user.given_name %></li>
-          <li class="list-group-item">フリガナ：<%= profile.user.family_name_kana %><%= profile.user.given_name_kana %></li>
-          <li class="list-group-item">性別：<%= profile.sex.name %></li>
-          <li class="list-group-item">年齢：<%= profile.age_group.name %></li>
-          <li class="list-group-item">血液型：<%= profile.blood_type.name %></li>
-          <li class="list-group-item">生年月日：<%= profile.birth_day %></li>
-          <li class="list-group-item">星座：<%= profile.zodiac_sign.name %></li>
+          <li class="list-group-item"><%= profile.user.family_name %> <%= profile.user.given_name %> (<%= profile.user.family_name_kana %> <%= profile.user.given_name_kana %>)</li>
+          <li class="list-group-item"><%= profile.sex.name %>　<%= profile.age_group.name %>　<%= profile.blood_type.name %>　<%= profile.zodiac_sign.name %></li>
           <li class="list-group-item">住んでいる地域：<%= profile.address.name %></li>
-          <li class="list-group-item">職業：<%= profile.occupation.name %></li>
-          <li class="list-group-item">勤務先：<%= profile.work_place %></li>
+          <li class="list-group-item">職業：<%= profile.occupation.name %>(<%= profile.work_place %>)</li>
         </ul>
         <div class="card-body">
-          <h5 class="card-title">メンターから一言</h5>
+          <h5 class="card-title">メッセージ</h5>
           <p class="card-text"><%= profile.summary %></p>
         </div>
       </div>
@@ -34,3 +28,5 @@
   </div>
 
 </div>
+
+<%= render "shared/footer" %>

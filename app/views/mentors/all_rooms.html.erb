@@ -15,9 +15,6 @@
 
     <div class="search_unit_result">
       <% @super_rooms.each do |room| %>
-      <%= room.user_family_name %><%= room.user_given_name %>
-      (ユーザーID：<%= room.user_id %>)
-      <% %>
       <div>
         <button type="button"
           class="btn btn-outline-primary"><%= link_to room.name, room_messages_path(room) %></button>
@@ -28,9 +25,13 @@
         <% elsif room.status == 2 %>
         <span class="badge badge-pill badge-success">解決済</span>
         <% end %>
+        <%= room.user_family_name %><%= room.user_given_name %>
+        (ユーザーID：<%= room.user_id %>)
       </div>
       <% end %>
     </div>
-  </div>
 
+  </div>
 </div>
+
+<%= render "shared/footer" %>

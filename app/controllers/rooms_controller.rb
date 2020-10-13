@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to root_path
     else
-      render :new
+      render :home
     end
   end
 
@@ -33,8 +33,8 @@ class RoomsController < ApplicationController
   def log_in
   end
 
-  def list_up
-    @header_title = "相談ルーム"
+  def library
+    @header_title = "ライブラリ"
   end
 
   private

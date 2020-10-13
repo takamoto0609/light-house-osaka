@@ -3,15 +3,12 @@
 <div class="shared_page d-flex">
 
   <div class="shared_page_L">
-    <% if current_user.mentor == 0%>
-    <%= render "shared/cards/start" %>
-    <% elsif current_user.mentor != 0%>
     <%= render "shared/cards/home" %>
-    <% end %>
+    <%= render "shared/cards/library" %>
   </div>
 
   <div class="shared_page_R">
-    <%= render "navi" %>
+  <%= render "library/content_4" %>
   </div>
 
 </div>

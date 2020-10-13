@@ -13,15 +13,16 @@ Rails.application.routes.draw do
       get 'home'
       get 'log_in'
       get 'list_up'
+      get 'library'
      end
   end
   resources :profiles do
-  collection do #今回はcollectionを使用（idは不要）
-   get 'list_up'
-   get 'search'
-   get 'mentors_list_up'
+    collection do #今回はcollectionを使用（idは不要）
+      get 'list_up'
+      get 'search'
+      get 'mentors_list_up'
+    end
   end
-end
   resources :mentors do
     collection do #今回はcollectionを使用（idは不要）
      get 'mentor_approval'
@@ -31,5 +32,15 @@ end
      get 'all_profiles'
      get 'users_search'
     end
- end
+  end
+  resources :library do
+    collection do #今回はcollectionを使用（idは不要）
+      get 'content_1'
+      get 'content_2'
+      get 'content_3'
+      get 'content_4'
+      get 'content_5'
+      get 'content_6'
+    end
+  end
 end

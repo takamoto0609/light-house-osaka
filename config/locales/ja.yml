@@ -27,5 +27,5 @@ ja:
         age_group_id: 年齢
         address_id: 住んでいる地域
         occupation_id: 職業
-        work_place: 勤務先
+        work_place: 職種
         summary: 自己紹介
