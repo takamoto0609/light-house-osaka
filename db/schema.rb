@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_000709) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "mentor", default: 0, null: false
+    t.integer "mentor", default: 1, null: false
     t.string "family_name", null: false
     t.string "given_name", null: false
     t.string "family_name_kana", null: false
