@@ -9,8 +9,7 @@
     <div>
       <%= image_tag "navi_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">Buffアプリへようこそ🎉🎉</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Welcome!", rooms_path %></button>
+    <h5 class="card-title"><%= link_to "Buffアプリへようこそ🎉🎉", rooms_path %></h5>
     <br>
   </div>
   <%= render "shared/cards/wall" %>
@@ -26,8 +25,7 @@
     <div>
       <%= image_tag "rooms_img3.jpg",class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">全ルーム一覧</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", all_rooms_mentors_path %></button>
+    <h5 class="card-title"><%= link_to "全ルーム一覧", all_rooms_mentors_path %></h5>
     <p class="card-text">全てのルームが閲覧できます。</p>
   </div>
 
@@ -35,8 +33,7 @@
     <div>
       <%= image_tag "search_img7.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">検索</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", list_up_profiles_path %></button>
+    <h5 class="card-title"><%= link_to "検索", list_up_profiles_path %></h5>
     <p class="card-text">プロフィール検索できます。</p>
   </div>
   <% end %>
@@ -48,8 +45,7 @@
     <div>
       <%= image_tag "start_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">新規ルーム作成</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#",id:"modal_new_room" %></button>
+    <h5 class="card-title"><%= link_to "新規ルーム作成", "#",id:"modal_new_room" %></h5>
     <div class="modal_window" , id="modal_window_new_room">
       <div class="modal_new_room" , style="width: 50%;">
         <%=form_with model: @room, local: true do |f|%><form>
@@ -86,8 +82,7 @@
     <div>
       <%= image_tag "mentor_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">マイルーム</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", "#" ,id:"modal_show_room"%></button>
+    <h5 class="card-title"><%= link_to "マイルーム", "#",id:"modal_show_room" %></h5>
     <div class="modal_window" , id="modal_window_show_room">
       <div class="modal_room_select">
         <h3>
@@ -122,9 +117,8 @@
     <div>
       <%= image_tag "book_img2.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">ライブラリ</h5>
-    <%# <button type="button" class="btn btn-outline-primary"><%= link_to "Go", library_index_path%></button>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "改装中...", "#"%></button>
+    <h5 class="card-title"><%= link_to "ライブラリ(改装中...)", "#" %></h5>
+    <%#リンクは"library_index_path"%>
     <p class="card-text">有益な情報を厳選してお届けします。</p>
   </div>
 
@@ -133,8 +127,7 @@
     <div>
       <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">新規プロフィール</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", new_profile_path %></button>
+    <h5 class="card-title"><%= link_to "新規プロフィール", new_profile_path %></h5>
     <p class="card-text">プロフィールを充実させましょう！</p>
   </div>
   <% elsif user_signed_in? && Profile.all.where(user_id: current_user.id) != nil %>
@@ -142,8 +135,7 @@
     <div>
       <%= image_tag "profile_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">マイプロフィール</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", profile_path(:user) %></button>
+    <h5 class="card-title"><%= link_to "マイプロフィール", profile_path(:user) %></h5>
     <p class="card-text">プロフィールの閲覧・編集ができます。</p>
   </div>
   <% end %>
@@ -152,8 +144,7 @@
     <div>
       <%= image_tag "mentor_img.jpg", class:"card-img-top", alt:"..." %>
     </div>
-    <h5 class="card-title">公認メンター一覧</h5>
-    <button type="button" class="btn btn-outline-primary"><%= link_to "Go", mentors_list_up_profiles_path %></button>
+    <h5 class="card-title"><%= link_to "公認メンター一覧", mentors_list_up_profiles_path %></h5>
     <p class="card-text">あなたと共に成長していくメンターの皆さんです。</p>
   </div>
   <%= render "shared/cards/wall" %>
