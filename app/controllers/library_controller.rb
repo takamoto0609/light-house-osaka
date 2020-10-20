@@ -8,7 +8,7 @@ class LibraryController < ApplicationController
   end
 
   def content_2
-    @header_title = "ライブラリ > アイテム Ver.1.0"
+    @header_title = "ライブラリ > 必要なもの Ver.1.0"
   end
 
   def content_3
