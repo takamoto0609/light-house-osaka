@@ -4,7 +4,7 @@
 
   <div class="shared_page_L">
     <% if current_user.mentor == 0%>
-    <%= render "shared/cards/start" %>
+    <%= render "shared/cards/home" %>
     <% elsif current_user.mentor != 0%>
     <%= render "shared/cards/home" %>
     <% end %>

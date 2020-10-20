@@ -3,7 +3,7 @@
 <div class="home_page row">
 
   <%#新規ユーザーへの説明機能%>
-  <% if current_user.mentor == 0%>
+  <% if current_user.mentor == -1%>
   <%= render "shared/cards/wall" %>
   <div class="card col-4" style="width: 18rem;">
     <div>
@@ -40,7 +40,7 @@
   <%#メンターのみ使える機能%>
 
   <%#ユーザーのみ使える機能%>
-  <% if current_user.mentor == 1%>
+  <% if current_user.mentor == 0 || current_user.mentor == 1 %>
   <div class="card col-4" style="width: 18rem;">
     <div>
       <%= image_tag "start_img2.jpg", class:"card-img-top", alt:"..." %>
@@ -73,7 +73,7 @@
           <button type="button" class="btn modal_room_select_btn"><%= link_to "ホームに戻る", root_path %></button>
       </div>
     </div>
-    <p class="card-text">新しく相談ルームを作成できます。<br>
+    <p class="card-text">困ったり悩んだりした時は相談してみましょう。<br>
       新しく作成されたルームには<span class="badge badge-pill badge-danger">新規</span>タグがつきます。
     </p>
   </div>
@@ -111,8 +111,6 @@
   <% end %>
   <%#ユーザーのみ使える機能%>
 
-  <%#アプリの説明書を見た後使える機能%>
-  <% if current_user.mentor != 0%>
   <div class="card col-4" style="width: 18rem;">
     <div>
       <%= image_tag "book_img2.jpg", class:"card-img-top", alt:"..." %>
@@ -146,9 +144,14 @@
     <h5 class="card-title"><%= link_to "公認メンター一覧", mentors_list_up_profiles_path %></h5>
     <p class="card-text">あなたと共に成長していくメンターの皆さんです。</p>
   </div>
-  <%= render "shared/cards/wall" %>
-  <% end %>
-  <%#アプリの説明書を見た後使える機能%>
+  <div class="card col-4" style="width: 18rem;">
+    <div>
+      <%= image_tag "navi_img.jpg", class:"card-img-top", alt:"..." %>
+    </div>
+    <h5 class="card-title"><%= link_to "Buffアプリへようこそ🎉🎉", rooms_path %></h5>
+    <p class="card-text">このアプリの説明書です。</p>
+    <br>
+  </div>
 
 </div>
 

@@ -14,8 +14,5 @@ class LibraryController < ApplicationController
   def content_3
     @header_title = "ライブラリ > 人生の落とし穴 Ver.1.0"
   end
-
-  def content_4
-    @header_title = "ライブラリ > 健康 Ver.1.0"
-  end
+  
 end

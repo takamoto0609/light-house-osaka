@@ -4,8 +4,8 @@ class RoomsController < ApplicationController
   def index
     @header_title = "アプリの説明書"
     @user = User.find_by(id: current_user.id)
-    @user.mentor = 1
-    @user.save
+    # @user.mentor = 1
+    # @user.save
   end
 
   def new
