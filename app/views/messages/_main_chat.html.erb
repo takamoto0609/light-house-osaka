@@ -1,11 +1,11 @@
-<h1><%= @room.name %></h1>
+<h1 style="max-width: 36rem;"><%= @room.name %></h1>
 <div class="card border-danger mb-3" style="max-width: 36rem;">
   <% if current_user.mentor == 2%>
   <div class="card-header">
     相談内容　(<%= @super_rooms.find_by(id: @room.id).user_family_name%><%= @super_rooms.find_by(id: @room.id).user_given_name%>さんの相談)
   </div>
   <% elsif current_user.mentor == 1%>
-  <div class="card-header">相談内容</div>
+  <div class="card-header">相談内容　<%= link_to "編集", edit_room_path(@room.id) %></div>
   <% end %>
   <div class="card-body text-danger">
     <h5 class="card-title"><%= @room.content %></h5>
@@ -18,10 +18,10 @@
 
 <%= form_with model: [@room, @message], html: {class: "form"}, local: true do |f|%>
 <%= render 'shared/error_messages', model: f.object %>
-<div class="form-input">
+<div class="form-input" style="max-width: 36rem;">
   <%= f.text_area :content, class: 'form-control', placeholder: 'メッセージを入力してください' %>
 </div>
 <%= f.submit '送信', class: 'btn btn-primary' %>
-タグの変え方：解決済(or解決済み)→<span class="badge badge-pill badge-success">解決済</span>/再開→<span
+タグ：解決済(or解決済み)→<span class="badge badge-pill badge-success">解決済</span>/再開→<span
   class="badge badge-pill badge-warning">相談中</span>に戻します
 <% end %>

@@ -16,9 +16,26 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     if @room.save
-      redirect_to root_path
+      redirect_to 
     else
       render :home
+    end
+  end
+
+  def edit
+    @header_title = "ルーム編集"
+    @room = Room.find_by(id: params[:id])
+    get_room_user
+  end
+
+  def update
+    @room = Room.new(room_params)
+    if @room.valid?
+      Room.find(params[:id]).update(room_params)
+      redirect_to room_messages_path(params[:id])
+    else
+      @room = Room.find_by(id: params[:id])
+      render :edit
     end
   end
 
@@ -48,6 +65,19 @@ class RoomsController < ApplicationController
     if(ua.include?('Mobile') || ua.include?('Android'))
       request.variant = :mobile
     end
+  end
+
+  def get_room_user
+    @super_rooms = Room.joins(:user).order(:status).order(user_id: "ASC")
+    .select("
+      rooms.id,
+      rooms.name,
+      content,
+      status,
+      user_id,
+      users.family_name AS user_family_name,
+      users.given_name AS user_given_name
+      ")
   end
 
 end

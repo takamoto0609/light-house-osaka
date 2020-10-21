@@ -3,6 +3,9 @@
 <div class="shared_page d-flex">
   <div class="shared_page_L">
     <%= render "shared/cards/home" %>
+    <% if current_user.id == @room.user_id %>
+    <%= render "shared/cards/edit.room" %>
+    <% end %>
     <% if current_user.mentor == 2%>
     <%= render "shared/cards/all.rooms" %>
     <% end %>

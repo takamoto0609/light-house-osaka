@@ -1,0 +1,32 @@
+<h1 style="max-width: 36rem;"><%= @room.name %></h1>
+<div class="card border-danger mb-3" style="max-width: 36rem;">
+  <% if current_user.mentor == 2%>
+  <div class="card-header">
+    相談内容　(<%= @super_rooms.find_by(id: @room.id).user_family_name%><%= @super_rooms.find_by(id: @room.id).user_given_name%>さんの相談)
+  </div>
+  <% elsif current_user.mentor == 1%>
+  <div class="card-header">相談内容</div>
+  <% end %>
+  <div class="card-body text-danger">
+    <h5 class="card-title"><%= @room.content %></h5>
+  </div>
+</div>
+
+<%=form_with model: @room, local: true do |f|%>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div>
+    <%= f.label :ルーム名 %>
+  </div>
+  <div style="max-width: 36rem;" >
+    <%= f.text_field :name, class:"form-control", placeholder: 'ルーム名を入力してください'%>
+  </div>
+  <div>
+    <%= f.label :相談内容 %>
+  </div>
+  <div style="max-width: 36rem;" >
+    <%= f.text_area :content, class:"room_content", placeholder: '相談内容を入力してください'%>
+  </div>
+  <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
+  <button class="btn btn-primary" type="submit">更新</button>
+
+  <% end %>
