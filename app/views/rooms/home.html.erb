@@ -62,7 +62,7 @@
             相談内容
           </h3>
           <div>
-            <%= f.text_area :content, class:"form-control", placeholder: '相談内容を入力してください'%>
+            <%= f.text_area :content, class:"room_content", placeholder: '相談内容を入力してください'%>
           </div>
           <input name="room[user_ids][]" type="hidden" value=<%=current_user.id%>>
           <br>
