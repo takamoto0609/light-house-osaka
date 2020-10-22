@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     if @room.save
-      redirect_to 
+      redirect_to home_rooms_path
     else
       render :home
     end
