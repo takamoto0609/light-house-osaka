@@ -6,14 +6,20 @@
 ## テストアカウント
 [URL https://light-house-osaka.herokuapp.com/](https://light-house-osaka.herokuapp.com/)
 ### ユーザー側のテストアカウント
-* ID user@test
-* PW usertest
+* メールアドレス
+      user@test
+* パスワード
+      usertest
 ### メンター側のテストアカウント
-* ID mentor@test
-* PW mentortest
+* メールアドレス
+      mentor@test
+* パスワード
+      mentortest
 ### 管理人室に入るためのベーシック認証
-* ID mentor
-* PW osaka
+* ID
+      mentor
+* パスワード
+      osaka
 
 ## 主な機能
 ### 管理人
