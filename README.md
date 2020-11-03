@@ -1,5 +1,5 @@
 ### 新社会人のBuffアプリ
-![...](https://gyazo.com/5678a65d6e0a68716ca345073580d97b)
+![...](README_img.jpg)
 
 ### 概要
 
