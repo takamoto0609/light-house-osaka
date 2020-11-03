@@ -1,5 +1,5 @@
 ## 新社会人のBuffアプリ
-<img src="README_img.jpg" alt="...">
+![README_img](https://user-images.githubusercontent.com/68495404/97948989-85811180-1dd5-11eb-9f2f-14ca3792e598.jpg)
 
 ## 概要
 
