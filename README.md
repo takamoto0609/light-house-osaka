@@ -1,9 +1,9 @@
 ### 新社会人のBuffアプリ
-![](https://gyazo.com/5678a65d6e0a68716ca345073580d97b)
+![...](https://gyazo.com/5678a65d6e0a68716ca345073580d97b)
 
-## 概要
+### 概要
 
-## テストアカウント
+### テストアカウント
 [URL https://light-house-osaka.herokuapp.com/](https://light-house-osaka.herokuapp.com/)
 #### ユーザー側のテストアカウント
 * ID user@test
