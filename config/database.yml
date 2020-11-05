@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: light_house_osaka_production
-  username: light_house_osaka
-  password: <%= ENV['LIGHT_HOUSE_OSAKA_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
