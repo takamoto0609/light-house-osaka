@@ -38,7 +38,7 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
+  # gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -58,7 +58,7 @@ group :test do
   gem 'webdrivers'
 end
 
-group :production do
+group :production, :staging do
   # gem 'rails_12factor'
   gem 'unicorn', '5.4.1'
 end
