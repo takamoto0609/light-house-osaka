@@ -1,0 +1,6 @@
+ユーザーID(※半角入力)または名前(※フリガナ可)で検索
+<%= form_with url: name_search_mentors_path, method: :get, local: true do |f| %>
+  <%= f.text_field :input_name %>
+  <%= f.submit :"検索", class:"name_search_btn" %>
+<% end %>
+<div class="sikiri_bar"></div>

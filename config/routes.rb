@@ -31,6 +31,7 @@ Rails.application.routes.draw do
      get 'all_rooms'
      get 'all_profiles'
      get 'users_search'
+     get 'name_search'
     end
   end
   resources :library do

@@ -4,7 +4,7 @@
 
   <div class="shared_page_L">
     <%= render "shared/cards/home" %>
-    <%= render "shared/cards/all.profiles" %>
+    <%= render "shared/cards/search" %>
     <%= render "shared/cards/all.rooms" %>
   </div>
 
@@ -12,6 +12,10 @@
     <div class="search_unit_form">
       <%= render "mentors/name_search" %>
       <%= render "profiles/search_form" %>
+    </div>
+
+    <div class="search_unit_result">
+      <%= render "mentors/name_search_result" %>
     </div>
   </div>
 

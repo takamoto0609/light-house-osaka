@@ -56,6 +56,7 @@ class ProfilesController < ApplicationController
   
   def list_up
     @header_title = "プロフィール検索"
+    @users = User.all
     @profiles = Profile.all.order(:user_id)
     set_profile_column
   end
