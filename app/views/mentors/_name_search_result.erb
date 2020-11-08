@@ -1,0 +1,40 @@
+<table>
+  <br>
+  <tbody>
+    <% if @users.length != 0 %>
+    <% @users.each do |user| %>
+      <li>
+        ID:<%= user.id %>
+        <%= user.family_name %> <%= user.given_name %>
+        <%= user.family_name_kana %> <%= user.given_name_kana %>
+        <%= user.profile.sex.name %>
+        <%= user.profile.age_group.name %>
+        <%= user.profile.blood_type.name %>
+        <%= user.profile.birth_day %>
+        <%= user.profile.zodiac_sign.name %>
+        <%= user.profile.address.name %>
+        <%= user.profile.occupation.name %>
+        <%= user.profile.work_place %>
+        <br>
+        自己紹介：<%= user.profile.summary %>
+        <% @rooms = @rooms.where(user_id: user.id) %>
+        <% @rooms.each do |room| %>
+        <div>
+        <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
+        <% if room.status == 0 %>
+        <span class="badge badge-pill badge-danger">新規</span>
+        <% elsif room.status == 1 %>
+        <span class="badge badge-pill badge-warning">相談中</span>
+        <% elsif room.status == 2 %>
+        <span class="badge badge-pill badge-success">解決済</span>
+        <% end %>
+        </div>
+        <% end %>
+      </li>
+    <% end %>
+    
+    <% else %>
+    該当者がいません
+    <% end %>
+  </tbody>
+</table>

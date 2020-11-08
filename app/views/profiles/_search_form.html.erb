@@ -1,7 +1,5 @@
 <div class="search_form">
   <%= search_form_for @p, url: search_profiles_path do |f| %>
-  <%= f.label :user_id_eq, 'ユーザーID' %>
-  <%= f.collection_select :user_id_eq, @profiles, :user_id, :user_id,  include_blank: '指定なし' %>
   <%= f.label :birth_day_eq, '生年月日' %>
   <%= f.collection_select :birth_day_eq, @profile_birth_day, :birth_day, :birth_day,  include_blank: '指定なし' %>
   <%#f.collection_select profileテーブルのカラム名＋属性, 配列データ, 表示する際参照するDBのカラム名, 実際に表示されるカラム名, 第五引数, オプション%>

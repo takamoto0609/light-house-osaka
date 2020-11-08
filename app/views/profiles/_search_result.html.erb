@@ -20,8 +20,6 @@
     自己紹介：<%= result.summary %>
   </li>
   <% @rooms = @rooms.where(user_id: result.user_id) %>
-  <% end %>
-
   <% @rooms.each do |room| %>
   <div>
     <button type="button" class="btn btn-outline-light"><%= link_to room.name, room_messages_path(room) %></button>
@@ -34,8 +32,10 @@
     <% end %>
   </div>
   <% end %>
+  <% end %>
 
   <% else %>
+  <br>
   該当者がいません
   <% end %>
   <br>

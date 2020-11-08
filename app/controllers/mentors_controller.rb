@@ -52,6 +52,19 @@ class MentorsController < ApplicationController
     @user = User.find_by(id: params[:format])
   end
 
+  def name_search
+    @header_title = "検索結果"
+    if params[:input_name].present?
+      @users = User.joins(:profile).where('family_name LIKE ?', "%#{params[:input_name]}%")
+      .or(User.joins(:profile).where('given_name LIKE ?', "%#{params[:input_name]}%"))
+      .or(User.joins(:profile).where('family_name_kana LIKE ?', "%#{params[:input_name]}%"))
+      .or(User.joins(:profile).where('given_name_kana LIKE ?', "%#{params[:input_name]}%"))
+      .or(User.joins(:profile).where('user_id LIKE ?', "#{params[:input_name]}"))
+    else
+      @users = User.none
+    end
+  end
+
   private
 
   def basic_auth
